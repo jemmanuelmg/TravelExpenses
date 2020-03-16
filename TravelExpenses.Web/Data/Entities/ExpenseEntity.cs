@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TravelExpenses.Web.Data.Entities
 {
     public class ExpenseEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public int Value { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [MaxLength(100, ErrorMessage = "The {0} field must have {1} characters.")]
         public string Category { get; set; }
 
         [DataType(DataType.DateTime)]
