@@ -25,5 +25,7 @@ namespace TravelExpenses.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string City { get; set;  }
 
+        public ICollection<ExpenseEntity> Expenses { get; set; }
+
     }
 }
