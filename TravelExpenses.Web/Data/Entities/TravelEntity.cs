@@ -23,7 +23,7 @@ namespace TravelExpenses.Web.Data.Entities
         public DateTime EndDate { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public string City { get; set; }
+        public string City { get; set;  }
 
     }
 }
