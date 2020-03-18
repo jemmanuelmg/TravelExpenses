@@ -27,5 +27,7 @@ namespace TravelExpenses.Web.Data.Entities
 
         public ICollection<ExpenseEntity> Expenses { get; set; }
 
+        public UserEntity User{ get; set; }
+
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TravelExpenses.Common.Enums;
+using TravelExpenses.Web.Data.Entities;
 
 namespace TravelExpenses.Web.Data.Entities
 {
@@ -28,6 +30,8 @@ namespace TravelExpenses.Web.Data.Entities
         public UserType UserType { get; set; }
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
+
+        public ICollection<TravelEntity> Travels { get; set; }
 
 
     }
