@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TravelExpenses.Web.Data.Entities;
+using TravelExpenses.Web.Models;
 
 namespace TravelExpenses.Web.Helpers
 {
@@ -11,23 +12,43 @@ namespace TravelExpenses.Web.Helpers
     {
         private readonly UserManager<UserEntity> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<UserEntity> _signInManager;
 
-        public UserHelper(
-            UserManager<UserEntity> userManager,
-            RoleManager<IdentityRole> roleManager)
+        public UserHelper(UserManager<UserEntity> userManager, RoleManager<IdentityRole> roleManager, SignInManager<UserEntity> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
+
+        public async Task<SignInResult> LoginAsync(LoginViewModel model)
+        {
+            return await _signInManager.PasswordSignInAsync(
+                model.Username,
+                model.Password,
+                model.RememberMe,
+                false);
+        }
+
+
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
+
+
         public async Task<IdentityResult> AddUserAsync(UserEntity user, string password)
         {
             return await _userManager.CreateAsync(user, password);
         }
 
+
         public async Task AddUserToRoleAsync(UserEntity user, string roleName)
         {
             await _userManager.AddToRoleAsync(user, roleName);
         }
+
 
         public async Task CheckRoleAsync(string roleName)
         {
@@ -41,10 +62,12 @@ namespace TravelExpenses.Web.Helpers
             }
         }
 
+
         public async Task<UserEntity> GetUserByEmailAsync(string email)
         {
             return await _userManager.FindByEmailAsync(email);
         }
+
 
         public async Task<bool> IsUserInRoleAsync(UserEntity user, string roleName)
         {

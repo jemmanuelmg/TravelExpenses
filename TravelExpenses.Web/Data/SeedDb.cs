@@ -70,7 +70,7 @@ namespace TravelExpenses.Web.Data
             {
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    Id = 100,
+                    //id = 100,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(3),
                     City = "Medellin",
@@ -79,7 +79,7 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            Id = 200,
+                            //id = 200,
                             Value = 350000,
                             Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
@@ -87,7 +87,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 201,
+                            //id = 201,
                             Value = 200000,
                             Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
@@ -95,7 +95,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 202,
+                            //id = 202,
                             Value = 150000,
                             Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,
@@ -106,7 +106,7 @@ namespace TravelExpenses.Web.Data
 
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    Id = 101,
+                    //id = 101,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(5),
                     City = "Bogota",
@@ -115,7 +115,7 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            Id = 203,
+                            //id = 203,
                             Value = 450000,
                             Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
@@ -123,7 +123,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 204,
+                            //id = 204,
                             Value = 300000,
                             Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
@@ -131,7 +131,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 205,
+                            //id = 205,
                             Value = 250000,
                             Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,
@@ -142,7 +142,7 @@ namespace TravelExpenses.Web.Data
 
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    Id = 102,
+                    //id = 102,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(7),
                     City = "Barranquilla",
@@ -151,7 +151,7 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            Id = 203,
+                            //id = 206,
                             Value = 150000,
                             Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
@@ -159,7 +159,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 204,
+                            //id = 207,
                             Value = 500000,
                             Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
@@ -167,7 +167,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 205,
+                            //id = 208,
                             Value = 200000,
                             Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,
@@ -178,7 +178,7 @@ namespace TravelExpenses.Web.Data
 
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    Id = 103,
+                    //id = 103,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(15),
                     City = "Bucaramanga",
@@ -187,7 +187,7 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            Id = 203,
+                            //id = 209,
                             Value = 120000,
                             Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
@@ -195,7 +195,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 204,
+                            //id = 210,
                             Value = 800000,
                             Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
@@ -203,7 +203,7 @@ namespace TravelExpenses.Web.Data
                         },
                         new ExpenseEntity
                         {
-                            Id = 205,
+                            //id = 211,
                             Value = 200000,
                             Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,

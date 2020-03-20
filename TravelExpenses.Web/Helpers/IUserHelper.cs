@@ -19,5 +19,10 @@ namespace TravelExpenses.Web.Helpers
 
         Task<bool> IsUserInRoleAsync(UserEntity user, string roleName);
 
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+
+        Task LogoutAsync();
+
+
     }
 }
