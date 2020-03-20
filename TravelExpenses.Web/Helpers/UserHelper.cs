@@ -14,12 +14,14 @@ namespace TravelExpenses.Web.Helpers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<UserEntity> _signInManager;
 
+
         public UserHelper(UserManager<UserEntity> userManager, RoleManager<IdentityRole> roleManager, SignInManager<UserEntity> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
         }
+
 
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
         {
@@ -29,7 +31,6 @@ namespace TravelExpenses.Web.Helpers
                 model.RememberMe,
                 false);
         }
-
 
 
         public async Task LogoutAsync()
@@ -74,5 +75,6 @@ namespace TravelExpenses.Web.Helpers
             return await _userManager.IsInRoleAsync(user, roleName);
         }
 
+        
     }
 }

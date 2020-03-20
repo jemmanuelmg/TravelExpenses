@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using TravelExpenses.Web.Data.Entities;
+using TravelExpenses.Web.Models;
 
 namespace TravelExpenses.Web.Helpers
 {

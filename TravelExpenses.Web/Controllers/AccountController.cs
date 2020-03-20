@@ -1,24 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using TravelExpenses.Web.Helpers;
 using TravelExpenses.Web.Models;
-using TravelExpenses.Web.Data.Entities;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TravelExpenses.Web.Controllers
 {
-    public class AccountController
+    public class AccountController : Controller
     {
         private readonly IUserHelper _userHelper;
 

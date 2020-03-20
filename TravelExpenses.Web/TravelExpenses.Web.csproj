@@ -14,4 +14,9 @@
     <ProjectReference Include="..\TravelExpenses.Common\TravelExpenses.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\API\" />
+    <Folder Include="Views\Account\" />
+  </ItemGroup>
+
 </Project>
