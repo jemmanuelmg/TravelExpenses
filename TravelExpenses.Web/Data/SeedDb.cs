@@ -29,7 +29,11 @@ namespace TravelExpenses.Web.Data
             var user1 = await CheckUserAsync("3030", "Maria", "Arenas", "3182024296", "maria_arenas_travelexpenses@yopmail.com", UserType.User);
             var user2 = await CheckUserAsync("4040", "Carlos", "Restrepo", "3182024296", "carlos_restrepo_travelexpenses@yopmail.co", UserType.User);
 
-            await CheckTravelsAsync(admin, user1, user2);
+            var expenseType1 = await CheckExpenseTypeAsync("Transporte");
+            var expenseType2 = await CheckExpenseTypeAsync("Hospedaje");
+            var expenseType3 = await CheckExpenseTypeAsync("Alimentacion");
+
+            await CheckTravelsAsync(admin, user1, user2, expenseType1, expenseType2, expenseType3);
         }
 
         private async Task<UserEntity> CheckUserAsync(string document, string firstName, string lastName, string phone, string email, UserType userType)
@@ -63,14 +67,24 @@ namespace TravelExpenses.Web.Data
         }
 
 
-        private async Task CheckTravelsAsync(UserEntity driver, UserEntity user1, UserEntity user2)
+        private async Task<ExpenseTypeEntity> CheckExpenseTypeAsync(string name)
+        {
+            ExpenseTypeEntity expenseType = new ExpenseTypeEntity();
+            expenseType.Name = name;
+            _dataContext.Add(expenseType);
+            await _dataContext.SaveChangesAsync();
 
+            return expenseType;
+
+        }
+
+
+        private async Task CheckTravelsAsync(UserEntity driver, UserEntity user1, UserEntity user2, ExpenseTypeEntity expenseType1, ExpenseTypeEntity expenseType2, ExpenseTypeEntity expenseType3)
         {
             if (!_dataContext.Travels.Any())
             {
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    //id = 100,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(3),
                     City = "Medellin",
@@ -79,34 +93,30 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            //id = 200,
                             Value = 350000,
-                            Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType1
                         },
                         new ExpenseEntity
                         {
-                            //id = 201,
                             Value = 200000,
-                            Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType2
                         },
                         new ExpenseEntity
                         {
-                            //id = 202,
                             Value = 150000,
-                            Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType3
                         },
                     }
-                });
+                }) ;
 
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    //id = 101,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(5),
                     City = "Bogota",
@@ -115,34 +125,30 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            //id = 203,
                             Value = 450000,
-                            Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType1
                         },
                         new ExpenseEntity
                         {
-                            //id = 204,
                             Value = 300000,
-                            Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType2
                         },
                         new ExpenseEntity
                         {
-                            //id = 205,
                             Value = 250000,
-                            Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType3
                         },
                     }
                 });
 
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    //id = 102,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(7),
                     City = "Barranquilla",
@@ -151,34 +157,30 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            //id = 206,
                             Value = 150000,
-                            Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType1
                         },
                         new ExpenseEntity
                         {
-                            //id = 207,
                             Value = 500000,
-                            Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType2
                         },
                         new ExpenseEntity
                         {
-                            //id = 208,
                             Value = 200000,
-                            Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType3
                         },
                     }
                 });
 
                 _dataContext.Travels.Add(new TravelEntity
                 {
-                    //id = 103,
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now.AddDays(15),
                     City = "Bucaramanga",
@@ -187,27 +189,24 @@ namespace TravelExpenses.Web.Data
                     {
                         new ExpenseEntity
                         {
-                            //id = 209,
                             Value = 120000,
-                            Category = "Transporte",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType1
                         },
                         new ExpenseEntity
                         {
-                            //id = 210,
                             Value = 800000,
-                            Category = "Hospedaje",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType2
                         },
                         new ExpenseEntity
                         {
-                            //id = 211,
                             Value = 200000,
-                            Category = "Alimentacion",
                             CreatedDate = DateTime.UtcNow,
-                            ReceiptPath = "test/route/to/receipt.jpg"
+                            ReceiptPath = "test/route/to/receipt.jpg",
+                            ExpenseType = expenseType3
                         },
                     }
                 });

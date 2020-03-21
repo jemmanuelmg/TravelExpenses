@@ -12,10 +12,6 @@ namespace TravelExpenses.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public int Value { get; set; }
 
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        [MaxLength(100, ErrorMessage = "The {0} field must have {1} characters.")]
-        public string Category { get; set; }
-
         [DataType(DataType.DateTime)]
         [Display(Name = "Created Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
@@ -26,6 +22,8 @@ namespace TravelExpenses.Web.Data.Entities
         public string ReceiptPath { get; set; }
 
         public TravelEntity Travel { get; set; }
+
+        public ExpenseTypeEntity ExpenseType { get; set; }
 
     }
 }
