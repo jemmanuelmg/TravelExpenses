@@ -8,7 +8,7 @@ using Prism.Navigation;
 
 namespace TravelExpenses.Prism.ViewModels
 {
-    class MenuItemViewModel : Menu
+    public class MenuItemViewModel : Menu
     {
         private readonly INavigationService _navigationService;
         private DelegateCommand _selectMenuCommand;
@@ -22,7 +22,7 @@ namespace TravelExpenses.Prism.ViewModels
 
         private async void SelectMenuAsync()
         {
-            await _navigationService.NavigateAsync($"/TaxiMasterDetailPage/NavigationPage/{PageName}");
+            await _navigationService.NavigateAsync($"/TravelMasterDetailPage/NavigationPage/{PageName}");
         }
 
     }

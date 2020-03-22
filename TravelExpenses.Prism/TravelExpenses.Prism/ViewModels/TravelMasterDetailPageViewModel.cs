@@ -1,9 +1,4 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Prism.Navigation;
+﻿using Prism.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,13 +11,13 @@ namespace TravelExpenses.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
 
+        public ObservableCollection<MenuItemViewModel> Menus { get; set; }
+
         public TravelMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             LoadMenus();
         }
-
-        public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
         private void LoadMenus()
         {
