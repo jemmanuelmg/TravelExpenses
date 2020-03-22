@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TravelExpenses.Web.Data;
 using TravelExpenses.Web.Data.Entities;
+using TravelExpenses.Web.Helpers;
 
 namespace TravelExpenses.Web.Controllers.API
 {
@@ -14,11 +15,13 @@ namespace TravelExpenses.Web.Controllers.API
     [ApiController]
     public class TravelsController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly DataContext _context; 
+        private readonly IConverterHelper _converterHelper;
 
-        public TravelsController(DataContext context)
+        public TravelsController(DataContext context, IConverterHelper converterHelper)
         {
             _context = context;
+            _converterHelper = converterHelper;
         }
 
         // GET: api/Travels
@@ -37,16 +40,22 @@ namespace TravelExpenses.Web.Controllers.API
                 return BadRequest(ModelState);
             }
 
-            var travelEntity = await _context.Travels
+
+            TravelEntity travelEntity = await _context.Travels
+                .Include(t => t.User)
                 .Include(t => t.Expenses)
+                    .ThenInclude(t => t.ExpenseType)
                 .FirstOrDefaultAsync(t => t.Id == id);
+
+            //ExpenseTypeEntity expeseType = await 
+
 
             if (travelEntity == null)
             {
                 return NotFound();
             }
 
-            return Ok(travelEntity);
+            return Ok(_converterHelper.ToTravelResponse(travelEntity));
         }
 
         // PUT: api/Travels/5

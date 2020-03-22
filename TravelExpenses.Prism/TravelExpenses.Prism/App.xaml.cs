@@ -30,6 +30,7 @@ namespace TravelExpenses.Prism
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<TravelMasterDetailPage, TravelMasterDetailPageViewModel>();
         }
     }
 }
