@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TravelExpenses.Common.Models
 {
-    class TravelResponse
+    public class TravelResponse
     {
         public int Id { get; set; }
 

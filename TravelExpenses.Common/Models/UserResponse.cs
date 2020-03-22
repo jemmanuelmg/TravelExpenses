@@ -5,7 +5,7 @@ using TravelExpenses.Common.Enums;
 
 namespace TravelExpenses.Common.Models
 {
-    class UserResponse
+    public  class UserResponse
     {
         public string Id { get; set; }
 

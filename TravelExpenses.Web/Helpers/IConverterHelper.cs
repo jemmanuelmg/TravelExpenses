@@ -7,7 +7,7 @@ using TravelExpenses.Common.Models;
 
 namespace TravelExpenses.Web.Helpers
 {
-    interface IConverterHelper
+    public interface IConverterHelper
     {
         TravelResponse ToTravelResponse(TravelEntity travelEntity);
     }

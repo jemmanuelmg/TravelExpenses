@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TravelExpenses.Common.Models
 {
-    class ExpenseResponse
+    public class ExpenseResponse
     {
         public int Id { get; set; }
 
@@ -15,6 +15,8 @@ namespace TravelExpenses.Common.Models
         public DateTime CreatedDateLocal => CreatedDate.ToLocalTime();
 
         public string ReceiptPath { get; set; }
-        
+
+        public ExpenseTypeResponse ExpenseType { get; set; }
+
     }
 }
