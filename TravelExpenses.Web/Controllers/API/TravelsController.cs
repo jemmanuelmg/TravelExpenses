@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TravelExpenses.Common.Models;
 using TravelExpenses.Web.Data;
 using TravelExpenses.Web.Data.Entities;
 using TravelExpenses.Web.Helpers;
@@ -40,16 +41,26 @@ namespace TravelExpenses.Web.Controllers.API
                 return BadRequest(ModelState);
             }
 
-
             TravelEntity travelEntity = await _context.Travels
                 .Include(t => t.User)
                 .Include(t => t.Expenses)
                     .ThenInclude(t => t.ExpenseType)
                 .FirstOrDefaultAsync(t => t.Id == id);
 
-            //ExpenseTypeEntity expeseType = await 
+            /*List<TravelEntity> result = _context.Travels
+                .Where(t => t.City == "Massachusets")
+                .Include(t => t.User)
+                .Include(t => t.Expenses)
+                .ThenInclude(t => t.ExpenseType)
+                .ToList<TravelEntity>();
 
+            List<TravelResponse> list2 = new List<TravelResponse>();
+            foreach (TravelEntity element in result){
+                list2.Add(_converterHelper.ToTravelResponse(element));
+            }
 
+            //return Ok(list2);*/
+            
             if (travelEntity == null)
             {
                 return NotFound();
