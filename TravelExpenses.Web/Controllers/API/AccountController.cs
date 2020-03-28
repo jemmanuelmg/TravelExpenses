@@ -7,6 +7,7 @@ using TravelExpenses.Common.Models;
 using TravelExpenses.Web.Data;
 using TravelExpenses.Web.Data.Entities;
 using TravelExpenses.Web.Helpers;
+using TravelExpenses.Web.Resources;
 using System.Globalization;
 
 
@@ -14,7 +15,7 @@ namespace TravelExpenses.Web.Controllers.API
 {
     public class AccountController : ControllerBase
     {
-        /*private readonly DataContext _dataContext;
+        private readonly DataContext _dataContext;
         private readonly IUserHelper _userHelper;
         private readonly IMailHelper _mailHelper;
         private readonly IImageHelper _imageHelper;
@@ -95,7 +96,7 @@ namespace TravelExpenses.Web.Controllers.API
                 IsSuccess = true,
                 Message = Resource.EmailConfirmationSent
             });
-        }*/
+        }
 
     }
 }
