@@ -30,7 +30,7 @@ namespace TravelExpenses.Web.Helpers
             };
         }
 
-        private UserResponse ToUserResponse(UserEntity user)
+        public UserResponse ToUserResponse(UserEntity user)
         {
             if (user == null)
             {
@@ -63,7 +63,7 @@ namespace TravelExpenses.Web.Helpers
         }
 
 
-        private ExpenseTypeResponse ToExpenseTypeResponse(ExpenseTypeEntity expenseType)
+        public ExpenseTypeResponse ToExpenseTypeResponse(ExpenseTypeEntity expenseType)
         {
             if (expenseType == null)
             {

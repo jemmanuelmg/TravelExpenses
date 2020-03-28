@@ -16,6 +16,8 @@ namespace TravelExpenses.Web.Helpers
 
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);
 
+        Task<IdentityResult> UpdateUserAsync(UserEntity user);
+
         Task CheckRoleAsync(string roleName);
 
         Task AddUserToRoleAsync(UserEntity user, string roleName);
@@ -25,6 +27,10 @@ namespace TravelExpenses.Web.Helpers
         Task<SignInResult> LoginAsync(LoginViewModel model);
 
         Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
+
+        Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user);
+
+        Task<string> GeneratePasswordResetTokenAsync(UserEntity user);
 
         Task LogoutAsync();
 

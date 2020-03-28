@@ -12,5 +12,11 @@ namespace TravelExpenses.Web.Helpers
         TravelResponse ToTravelResponse(TravelEntity travelEntity);
 
         ExpenseResponse ToExpenseResponse(ExpenseEntity expenseEntity);
+
+        ExpenseTypeResponse ToExpenseTypeResponse(ExpenseTypeEntity expenseType);
+
+        UserResponse ToUserResponse(UserEntity user);
+
+
     }
 }
