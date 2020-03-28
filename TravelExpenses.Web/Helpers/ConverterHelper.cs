@@ -50,6 +50,19 @@ namespace TravelExpenses.Web.Helpers
             };
         }
 
+        public ExpenseResponse ToExpenseResponse(ExpenseEntity expenseEntity)
+        {
+            return new ExpenseResponse
+            {
+                Id = expenseEntity.Id,
+                Value = expenseEntity.Value,
+                CreatedDate = expenseEntity.CreatedDate,
+                ReceiptPath = expenseEntity.ReceiptPath,
+                ExpenseType = ToExpenseTypeResponse(expenseEntity.ExpenseType)
+            };
+        }
+
+
         private ExpenseTypeResponse ToExpenseTypeResponse(ExpenseTypeEntity expenseType)
         {
             if (expenseType == null)

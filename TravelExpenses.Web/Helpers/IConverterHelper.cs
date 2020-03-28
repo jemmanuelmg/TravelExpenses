@@ -10,5 +10,7 @@ namespace TravelExpenses.Web.Helpers
     public interface IConverterHelper
     {
         TravelResponse ToTravelResponse(TravelEntity travelEntity);
+
+        ExpenseResponse ToExpenseResponse(ExpenseEntity expenseEntity);
     }
 }

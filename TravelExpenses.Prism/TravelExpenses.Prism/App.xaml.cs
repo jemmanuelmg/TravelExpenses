@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using TravelExpenses.Common.Services;
 using TravelExpenses.Prism.ViewModels;
 using TravelExpenses.Prism.Views;
 using Xamarin.Forms;
@@ -28,6 +29,7 @@ namespace TravelExpenses.Prism
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<TravelMasterDetailPage, TravelMasterDetailPageViewModel>();

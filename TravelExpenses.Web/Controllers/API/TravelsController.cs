@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using TravelExpenses.Common.Models;
 using TravelExpenses.Web.Data;
 using TravelExpenses.Web.Data.Entities;
@@ -13,24 +11,52 @@ using TravelExpenses.Web.Helpers;
 namespace TravelExpenses.Web.Controllers.API
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class TravelsController : ControllerBase
     {
-        private readonly DataContext _context; 
+        private readonly DataContext _context;
+        private readonly IUserHelper _userHelper;
         private readonly IConverterHelper _converterHelper;
 
-        public TravelsController(DataContext context, IConverterHelper converterHelper)
+        public TravelsController(DataContext context, IUserHelper userHelper, IConverterHelper converterHelper)
         {
             _context = context;
+            _userHelper = userHelper;
             _converterHelper = converterHelper;
         }
 
-        // GET: api/Travels
-        /*[HttpGet]
-        public IEnumerable<TravelEntity> GetTravels()
+
+
+        // POST: api/Travels
+        [HttpPost]
+        public async Task<IActionResult> PostTravelEntity([FromBody] TravelRequest travelRequest)
         {
-            return _context.Travels;
-        }*/
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            UserEntity userEntity = await _userHelper.GetUserAsync(travelRequest.UserId);
+            if (userEntity == null)
+            {
+                return BadRequest("User doesn't exists.");
+            }
+
+            TravelEntity travelEntity = new TravelEntity 
+            { 
+                StartDate = travelRequest.StartDate,
+                EndDate = travelRequest.EndDate,
+                City = travelRequest.City,
+                User = userEntity,
+                //not expenses for now. Expenses will be added in the Expenses API controller
+            };
+
+            _context.Travels.Add(travelEntity);
+            await _context.SaveChangesAsync();
+
+            return Ok(_converterHelper.ToTravelResponse(travelEntity)); ;
+        }
 
         // GET: api/Travels/5
         [HttpGet("{id}")]
@@ -60,7 +86,7 @@ namespace TravelExpenses.Web.Controllers.API
             }
 
             //return Ok(list2);*/
-            
+
             if (travelEntity == null)
             {
                 return NotFound();
@@ -68,6 +94,13 @@ namespace TravelExpenses.Web.Controllers.API
 
             return Ok(_converterHelper.ToTravelResponse(travelEntity));
         }
+
+        // GET: api/Travels
+        /*[HttpGet]
+        public IEnumerable<TravelEntity> GetTravels()
+        {
+            return _context.Travels;
+        }*/
 
         // PUT: api/Travels/5
         /*[HttpPut("{id}")]
@@ -103,21 +136,7 @@ namespace TravelExpenses.Web.Controllers.API
 
             return NoContent();
         }
-
-        // POST: api/Travels
-        [HttpPost]
-        public async Task<IActionResult> PostTravelEntity([FromBody] TravelEntity travelEntity)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Travels.Add(travelEntity);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTravelEntity", new { id = travelEntity.Id }, travelEntity);
-        }
+        
 
         // DELETE: api/Travels/5
         [HttpDelete("{id}")]

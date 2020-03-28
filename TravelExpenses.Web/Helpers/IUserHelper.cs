@@ -10,7 +10,9 @@ namespace TravelExpenses.Web.Helpers
 {
     public interface IUserHelper
     {
-        Task<UserEntity> GetUserByEmailAsync(string email);
+        Task<UserEntity> GetUserAsync(string email);
+
+        Task<UserEntity> GetUserAsync(Guid userId);
 
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);
 
@@ -21,6 +23,8 @@ namespace TravelExpenses.Web.Helpers
         Task<bool> IsUserInRoleAsync(UserEntity user, string roleName);
 
         Task<SignInResult> LoginAsync(LoginViewModel model);
+
+        Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
 
         Task LogoutAsync();
 
