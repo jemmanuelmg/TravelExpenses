@@ -96,6 +96,7 @@ namespace TravelExpenses.Web.Data
                             Value = 350000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType1
                         },
                         new ExpenseEntity
@@ -103,6 +104,7 @@ namespace TravelExpenses.Web.Data
                             Value = 200000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType2
                         },
                         new ExpenseEntity
@@ -110,6 +112,7 @@ namespace TravelExpenses.Web.Data
                             Value = 150000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType3
                         },
                     }
@@ -128,6 +131,7 @@ namespace TravelExpenses.Web.Data
                             Value = 450000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType1
                         },
                         new ExpenseEntity
@@ -135,6 +139,7 @@ namespace TravelExpenses.Web.Data
                             Value = 300000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType2
                         },
                         new ExpenseEntity
@@ -142,6 +147,7 @@ namespace TravelExpenses.Web.Data
                             Value = 250000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType3
                         },
                     }
@@ -160,6 +166,7 @@ namespace TravelExpenses.Web.Data
                             Value = 150000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType1
                         },
                         new ExpenseEntity
@@ -167,6 +174,7 @@ namespace TravelExpenses.Web.Data
                             Value = 500000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType2
                         },
                         new ExpenseEntity
@@ -174,6 +182,7 @@ namespace TravelExpenses.Web.Data
                             Value = 200000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType3
                         },
                     }
@@ -192,6 +201,7 @@ namespace TravelExpenses.Web.Data
                             Value = 120000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType1
                         },
                         new ExpenseEntity
@@ -199,6 +209,7 @@ namespace TravelExpenses.Web.Data
                             Value = 800000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType2
                         },
                         new ExpenseEntity
@@ -206,6 +217,7 @@ namespace TravelExpenses.Web.Data
                             Value = 200000,
                             CreatedDate = DateTime.UtcNow,
                             ReceiptPath = "test/route/to/receipt.jpg",
+                            Comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae risus tristique, lobortis justo eget, condimentum mi. Mauris odio velit, varius sed finibus non, maximus eu mi",
                             ExpenseType = expenseType3
                         },
                     }

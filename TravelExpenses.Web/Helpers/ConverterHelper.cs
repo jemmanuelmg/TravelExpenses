@@ -18,13 +18,14 @@ namespace TravelExpenses.Web.Helpers
                 EndDate = travelEntity.EndDate,
                 City = travelEntity.City,
                 User = ToUserResponse(travelEntity.User),
-                Expenses = travelEntity.Expenses?.Select(t => new ExpenseResponse
+                Expenses = travelEntity.Expenses?.Select(e => new ExpenseResponse
                 {
-                    Id = t.Id,
-                    Value = t.Value,
-                    CreatedDate = t.CreatedDate,
-                    ReceiptPath = t.ReceiptPath,
-                    ExpenseType = ToExpenseTypeResponse(t.ExpenseType)
+                    Id = e.Id,
+                    Value = e.Value,
+                    CreatedDate = e.CreatedDate,
+                    ReceiptPath = e.ReceiptPath,
+                    Comment = e.Comment,
+                    ExpenseType = ToExpenseTypeResponse(e.ExpenseType)
 
                 }).ToList(),
             };

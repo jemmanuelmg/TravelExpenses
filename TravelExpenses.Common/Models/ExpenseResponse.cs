@@ -10,6 +10,8 @@ namespace TravelExpenses.Common.Models
 
         public int Value { get; set; }
 
+        public string Comment { get; set; }
+
         public DateTime CreatedDate { get; set; }
 
         public DateTime CreatedDateLocal => CreatedDate.ToLocalTime();
