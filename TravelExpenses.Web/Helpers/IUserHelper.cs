@@ -32,6 +32,8 @@ namespace TravelExpenses.Web.Helpers
 
         Task<string> GeneratePasswordResetTokenAsync(UserEntity user);
 
+        Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword);
+
         Task LogoutAsync();
 
 
