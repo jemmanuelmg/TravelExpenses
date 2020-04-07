@@ -599,5 +599,6 @@
 	                return ResourceManager.GetString("User", resourceCulture);
 	            }
 	        }
-	    }
+
+    }
 	}

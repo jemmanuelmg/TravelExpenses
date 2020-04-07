@@ -65,8 +65,6 @@ namespace TravelExpenses.Prism.Helpers
 
         public static string Email => Resource.Email;
 
-        public static string LoginError => Resource.LoginError;
-
         public static string EmailPlaceHolder => Resource.EmailPlaceHolder;
 
         public static string EmailError => Resource.EmailError;
@@ -78,6 +76,8 @@ namespace TravelExpenses.Prism.Helpers
         public static string PasswordPlaceHolder => Resource.PasswordPlaceHolder;
 
         public static string Register => Resource.Register;
+
+        public static string LoginError => Resource.LoginError;
 
         public static string StartTrip => Resource.StartTrip;
 
@@ -124,5 +124,6 @@ namespace TravelExpenses.Prism.Helpers
         public static string PlaqueError2 => Resource.PlaqueError2;
 
         public static string TaxiHistory => Resource.TaxiHistory;
+
     }
 }

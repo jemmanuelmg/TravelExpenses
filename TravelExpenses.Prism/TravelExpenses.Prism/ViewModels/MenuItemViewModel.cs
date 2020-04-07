@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TravelExpenses.Common.Models;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Navigation;
+using TravelExpenses.Common.Models;
 
 
 namespace TravelExpenses.Prism.ViewModels
