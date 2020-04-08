@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using TravelExpenses.Common.Helpers;
 using TravelExpenses.Common.Models;
 
 
@@ -19,6 +20,13 @@ namespace TravelExpenses.Prism.ViewModels
 
         private async void SelectMenuAsync()
         {
+            if (PageName == "LoginPage" && Settings.IsLogin)
+            {
+                Settings.IsLogin = false;
+                Settings.User = null;
+                Settings.Token = null;
+            }
+
             await _navigationService.NavigateAsync($"/TravelMasterDetailPage/NavigationPage/{PageName}");
         }
 

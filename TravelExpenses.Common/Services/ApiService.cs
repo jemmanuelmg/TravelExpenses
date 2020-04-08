@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Connectivity;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,6 +16,10 @@ namespace TravelExpenses.Common.Services
         {
             try
             {
+                /*Para pasar dtos a un llamado API usando HTTP primero crear un requestString, luego
+                 StringContent que contenga ese request string, y finalmente pasar ese StringContent llamado content
+                 a el metodo PostAsync() del cliente HTTP creado*/
+
                 string requestString = JsonConvert.SerializeObject(request);
                 StringContent content = new StringContent(requestString, Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient
@@ -92,6 +97,16 @@ namespace TravelExpenses.Common.Services
                     Message = ex.Message
                 };
             }
+        }
+
+        public async Task<bool> CheckConnectionAsync(string url)
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return false;
+            }
+
+            return await CrossConnectivity.Current.IsRemoteReachable(url);
         }
 
         public async Task<Response> GetTravelAsync(int id, string urlBase, string servicePrefix, string controller)

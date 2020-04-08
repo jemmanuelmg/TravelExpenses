@@ -1,19 +1,29 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
+using TravelExpenses.Common.Helpers;
+using TravelExpenses.Common.Models;
+using TravelExpenses.Common.Services;
 using TravelExpenses.Prism.Helpers;
+
 
 namespace TravelExpenses.Prism.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
+        private readonly IApiService _apiService;
         private bool _isRunning;
         private bool _isEnabled;
         private string _password;
         private DelegateCommand _loginCommand;
         private DelegateCommand _registerCommand;
 
-        public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
+        public LoginPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
+            _navigationService = navigationService;
+            _apiService = apiService;
+
             Title = "Iniciar Sesion";
             IsEnabled = true;
         }
@@ -48,7 +58,7 @@ namespace TravelExpenses.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Porfavor ingrese un correo valido",
+                    "Porfavor ingrese un email válido.",
                     "Aceptar");
                 return;
             }
@@ -61,12 +71,62 @@ namespace TravelExpenses.Prism.ViewModels
                     "Aceptar");
                 return;
             }
+
+            IsRunning = true;
+            IsEnabled = false;
+
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            bool connection = await _apiService.CheckConnectionAsync(url);
+            if (!connection)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert("Error", "No hay conexión a internet. Revise su conexión y vuelva a intentarlo", "Aceptar");
+                return;
+            }
+
+            TokenRequest request = new TokenRequest
+            {
+                Password = Password,
+                Username = Email
+            };
+
+            Response response = await _apiService.GetTokenAsync(url, "Account", "/CreateToken", request);
+
+            if (!response.IsSuccess)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert("Error", "El usuario o la contraseña son incorrectos, porfavor intentelo de nuevo", "Aceptar");
+                Password = string.Empty;
+                return;
+            }
+
+            TokenResponse token = (TokenResponse)response.Result;
+            EmailRequest emailRequest = new EmailRequest
+            {
+                CultureInfo = Languages.Culture,
+                Email = Email
+            };
+
+            //AQUI ES DONDE FALLA
+            Response response2 = await _apiService.GetUserByEmail(url, "api", "/Account/GetUserByEmail", "bearer", token.Token, emailRequest);
+            UserResponse userResponse = (UserResponse)response2.Result;
+
+            Settings.User = JsonConvert.SerializeObject(userResponse);
+            Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.IsLogin = true;
+
+            IsRunning = false;
+            IsEnabled = true;
+
+            await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
+            Password = string.Empty;
         }
 
         private void RegisterAsync()
         {
         }
-
 
     }
 

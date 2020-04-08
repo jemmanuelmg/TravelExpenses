@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace TravelExpenses.Web.Controllers.API
 {
+    [Route("api/[Controller]")]
     public class AccountController : ControllerBase
     {
         private readonly DataContext _dataContext;

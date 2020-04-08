@@ -9,7 +9,11 @@
         <ContentPage Title="Menu">
             <StackLayout Padding="20">
                 <Image HeightRequest="150"
-                       Source="ic_main_icon" Margin="0,30"/>
+                       Source="travels" Margin="0,30"/>
+                <Label FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="{Binding User.FullName}"
+                        TextColor="Black"/>
                 <ListView BackgroundColor="Transparent"
                           ItemsSource="{Binding Menus}"
                           HasUnevenRows="True"

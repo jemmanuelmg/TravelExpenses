@@ -64,6 +64,8 @@ namespace TravelExpenses.Web
             //Add the interfaces of the project
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddScoped<IConverterHelper, ConverterHelper>();
+            services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IMailHelper, MailHelper>();
             services.AddTransient<SeedDb>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

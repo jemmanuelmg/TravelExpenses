@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Threading;
-using Taxi.Prism.Helpers;
-using Taxi.Prism.Interfaces;
+using TravelExpenses.Prism.Helpers;
+using TravelExpenses.Prism.Interfaces;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Taxi.Prism.Droid.Implementations.Localize))]
