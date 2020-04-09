@@ -13,6 +13,8 @@ namespace TravelExpenses.Common.Services
 
         Task<bool> CheckConnectionAsync(string url);
 
+        Task<Response> RegisterUserAsync(string urlBase, string servicePrefix, string controller, UserRequest userRequest);
+
     }
 
 }

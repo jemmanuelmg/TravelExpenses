@@ -44,8 +44,9 @@ namespace TravelExpenses.Prism.ViewModels
             set => SetProperty(ref _isEnabled, value);
         }
 
+        //Cuando solo me interesa tomar el valor, lo hago asi
         public string Email { get; set; }
-
+        //Cuando me interesa tomar el valor y tambien setearlo o cambiarlo, lo hago asi
         public string Password
         {
             get => _password;
@@ -124,9 +125,12 @@ namespace TravelExpenses.Prism.ViewModels
             Password = string.Empty;
         }
 
-        private void RegisterAsync()
+        private async void RegisterAsync()
         {
+            //await _navigationService.NavigateAsync(nameof(RegisterPage));
+            await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/RegisterPage");
         }
+
 
     }
 

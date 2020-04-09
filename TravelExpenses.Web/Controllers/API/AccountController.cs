@@ -46,7 +46,7 @@ namespace TravelExpenses.Web.Controllers.API
             }
 
             CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
-            Resource.Culture = cultureInfo;
+            //Resource.Culture = cultureInfo;
 
             UserEntity user = await _userHelper.GetUserAsync(request.Email);
             if (user != null)
@@ -54,7 +54,7 @@ namespace TravelExpenses.Web.Controllers.API
                 return BadRequest(new Response
                 {
                     IsSuccess = false,
-                    Message = Resource.UserAlreadyExists
+                    Message = "Ya existe un usuario registrado con ese correo electrónico."
                 });
             }
 
@@ -92,13 +92,13 @@ namespace TravelExpenses.Web.Controllers.API
                 token = myToken
             }, protocol: HttpContext.Request.Scheme);
 
-            _mailHelper.SendMail(request.Email, Resource.EmailConfirmationSubject, $"<h1>{Resource.EmailConfirmationSubject}</h1>" +
-                $"{Resource.EmailConfirmationBody}</br></br><a href = \"{tokenLink}\">{Resource.ConfirmEmail}</a>");
+            _mailHelper.SendMail(request.Email, "Confirmacion de cuenta - Travel Expenses", $"<h1>Confirmar cuenta Travel Expenses</h1>" +
+                $"Porfavor da click en este enlace para confirmar tu cuenta y comenzar a usar la aplicación Travel Expenses</br></br><a href = \"{tokenLink}\">Tu enlace de confirmación</a>");
 
             return Ok(new Response
             {
                 IsSuccess = true,
-                Message = Resource.EmailConfirmationSent
+                Message = "Correo enviado, porfavor revisa tu bandeja de entrada para confirmar tu cuenta"
             });
         }
 

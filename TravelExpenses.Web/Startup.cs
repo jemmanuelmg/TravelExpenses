@@ -31,16 +31,23 @@ namespace TravelExpenses.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/NotAuthorized";
+                options.AccessDeniedPath = "/Account/NotAuthorized";
+            });
+
             //Rules for user's passwords
             services.AddIdentity<UserEntity, IdentityRole>(cfg =>
             {
-                cfg.User.RequireUniqueEmail = true;
+                cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
                 cfg.Password.RequireDigit = false;
                 cfg.Password.RequiredUniqueChars = 0;
                 cfg.Password.RequireLowercase = false;
                 cfg.Password.RequireNonAlphanumeric = false;
                 cfg.Password.RequireUppercase = false;
-            }).AddEntityFrameworkStores<DataContext>();
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<DataContext>();
+
 
             //Tell to startup that we're going to use tokens
             services.AddAuthentication()
@@ -68,6 +75,7 @@ namespace TravelExpenses.Web
             services.AddScoped<IMailHelper, MailHelper>();
             services.AddTransient<SeedDb>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -83,10 +91,12 @@ namespace TravelExpenses.Web
             }
 
             //Use authentication in this app
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseCookiePolicy();
+
 
             app.UseMvc(routes =>
             {
