@@ -39,7 +39,7 @@ namespace TravelExpenses.Web.Resources
 			{
 				if (object.ReferenceEquals(resourceMan, null))
 				{
-					global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Taxi.Web.Resources.Resource", typeof(Resource).Assembly);
+					global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TravelExpenses.Web.Resources.Resource", typeof(Resource).Assembly);
 					resourceMan = temp;
 				}
 				return resourceMan;

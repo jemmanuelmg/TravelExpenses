@@ -122,7 +122,7 @@ namespace TravelExpenses.Prism.ViewModels
 
             await App.Current.MainPage.DisplayAlert("Completado", response.Message, "Aceptar");
             //await _navigationService.GoBackAsync();
-            await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/LoginPage");
+            await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
 
 
         }
