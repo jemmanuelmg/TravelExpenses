@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -12,22 +14,26 @@ namespace TravelExpenses.Prism.ViewModels
 {
     public class RegisterPageViewModel : ViewModelBase
     {
+        private bool _isRunning;
+        private bool _isEnabled;
         private readonly INavigationService _navigationService;
         private readonly IRegexHelper _regexHelper;
         private readonly IApiService _apiService;
+        private readonly IFilesHelper _filesHelper;
+        private MediaFile _file;
         private ImageSource _image;
         private UserRequest _user;
         private Role _role;
         private ObservableCollection<Role> _roles;
-        private bool _isRunning;
-        private bool _isEnabled;
         private DelegateCommand _registerCommand;
+        private DelegateCommand _changeImageCommand;
 
-        public RegisterPageViewModel(INavigationService navigationService, IRegexHelper regexHelper, IApiService apiService) : base(navigationService)
+        public RegisterPageViewModel(INavigationService navigationService, IRegexHelper regexHelper, IApiService apiService, IFilesHelper filesHelper) : base(navigationService)
         {
             _navigationService = navigationService;
             _regexHelper = regexHelper;
             _apiService = apiService;
+            _filesHelper = filesHelper;
             Title = "Registrarse";
             Image = App.Current.Resources["UrlNoImage"].ToString();
             IsEnabled = true;
@@ -36,6 +42,7 @@ namespace TravelExpenses.Prism.ViewModels
         }
 
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
+        public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
 
         public ImageSource Image
         {
@@ -93,6 +100,14 @@ namespace TravelExpenses.Prism.ViewModels
                 return;
             }
 
+            byte[] imageArray = null;
+            if (_file != null)
+            {
+                imageArray = _filesHelper.ReadFully(_file.GetStream());
+            }
+
+            User.PictureArray = imageArray;
+
             User.UserTypeId = Role.Id;
             User.CultureInfo = "es";
             Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);
@@ -110,6 +125,49 @@ namespace TravelExpenses.Prism.ViewModels
             await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/LoginPage");
 
 
+        }
+
+        private async void ChangeImageAsync()
+        {
+            await CrossMedia.Current.Initialize();
+
+            string source = await Application.Current.MainPage.DisplayActionSheet(
+                "Obtener imagen de:",
+                "Cancelar",
+                null,
+                "Galeria",
+                "Camara");
+
+            if (source == "Cancelar")
+            {
+                _file = null;
+                return;
+            }
+
+            if (source == "Camara")
+            {
+                _file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                _file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (_file != null)
+            {
+                Image = ImageSource.FromStream(() =>
+                {
+                    System.IO.Stream stream = _file.GetStream();
+                    return stream;
+                });
+            }
         }
 
         private async Task<bool> ValidateDataAsync()

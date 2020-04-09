@@ -4,8 +4,8 @@ using TravelExpenses.Prism.Helpers;
 using TravelExpenses.Prism.Interfaces;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(Taxi.Prism.Droid.Implementations.Localize))]
-namespace Taxi.Prism.Droid.Implementations
+[assembly: Dependency(typeof(TravelExpenses.Prism.Droid.Implementations.Localize))]
+namespace TravelExpenses.Prism.Droid.Implementations
 {
     public class Localize : ILocalize
     {

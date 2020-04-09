@@ -12,7 +12,7 @@ namespace TravelExpenses.Prism.Helpers
     public class TranslateExtension : IMarkupExtension
     {
         private readonly CultureInfo ci;
-        private const string ResourceId = "Taxi.Prism.Resources.Resource";
+        private const string ResourceId = "TravelExpenses.Prism.Resources.Resource";
         private static readonly Lazy<ResourceManager> ResMgr =
             new Lazy<ResourceManager>(() => new ResourceManager(
                 ResourceId,

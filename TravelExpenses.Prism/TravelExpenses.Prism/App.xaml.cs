@@ -34,6 +34,7 @@ namespace TravelExpenses.Prism
         {
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.Register<IRegexHelper, RegexHelper>();
+            containerRegistry.Register<IFilesHelper, FilesHelper>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
