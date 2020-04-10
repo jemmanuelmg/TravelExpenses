@@ -18,6 +18,7 @@ namespace TravelExpenses.Web.Data
             _dataContext = dataContext;
             _userHelper = userHelper;
 
+
         }
 
         public async Task SeedAsync()
