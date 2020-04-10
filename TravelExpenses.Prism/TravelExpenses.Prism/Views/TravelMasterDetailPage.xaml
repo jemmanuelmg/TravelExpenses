@@ -27,6 +27,7 @@
                         <ffimageloading:CachedImage.Transformations>
                             <fftransformations:CircleTransformation />
                         </ffimageloading:CachedImage.Transformations>
+                        
                     </ffimageloading:CachedImage>
                     <Label RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Picture,Property=Y,Factor=1,Constant=110}"
                            FontAttributes="Bold"

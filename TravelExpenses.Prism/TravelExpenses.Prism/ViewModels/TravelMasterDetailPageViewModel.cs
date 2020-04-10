@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,6 @@ namespace TravelExpenses.Prism.ViewModels
         private static TravelMasterDetailPageViewModel _instance;
         private readonly INavigationService _navigationService;
         private UserResponse _user;
-
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
         public TravelMasterDetailPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
@@ -27,6 +27,7 @@ namespace TravelExpenses.Prism.ViewModels
             LoadUser();
             LoadMenus();
         }
+
 
         public static TravelMasterDetailPageViewModel GetInstance()
         {
