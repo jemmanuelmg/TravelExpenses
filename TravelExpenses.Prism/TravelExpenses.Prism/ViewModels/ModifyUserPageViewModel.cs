@@ -8,6 +8,7 @@ using TravelExpenses.Common.Helpers;
 using TravelExpenses.Common.Models;
 using TravelExpenses.Common.Services;
 using TravelExpenses.Prism.Helpers;
+using TravelExpenses.Prism.Views;
 using Xamarin.Forms;
 
 
@@ -27,6 +28,7 @@ namespace TravelExpenses.Prism.ViewModels
         private MediaFile _file;
         private DelegateCommand _changeImageCommand;
         private DelegateCommand _saveCommand;
+        private DelegateCommand _changePasswordCommand;
 
         public ModifyUserPageViewModel(INavigationService navigationService, IFilesHelper filesHelper, IApiService apiService) : base(navigationService)
         {
@@ -43,6 +45,9 @@ namespace TravelExpenses.Prism.ViewModels
         public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
 
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveAsync));
+
+        public DelegateCommand ChangePasswordCommand => _changePasswordCommand ?? (_changePasswordCommand = new DelegateCommand(ChangePasswordAsync));
+
 
         public ImageSource Image
         {
@@ -192,6 +197,12 @@ namespace TravelExpenses.Prism.ViewModels
                 });
             }
         }
+
+        private async void ChangePasswordAsync()
+        {
+            await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
+        }
+
 
     }
 

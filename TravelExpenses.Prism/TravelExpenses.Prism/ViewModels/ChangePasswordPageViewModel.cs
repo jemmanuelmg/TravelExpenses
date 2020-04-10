@@ -1,14 +1,12 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TravelExpenses.Common.Services;
+﻿using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
+using System.Threading.Tasks;
+using TravelExpenses.Common.Helpers;
+using TravelExpenses.Common.Models;
+using TravelExpenses.Common.Services;
 using TravelExpenses.Prism.Helpers;
-
+using TravelExpenses.Prism.Views;
 
 namespace TravelExpenses.Prism.ViewModels
 {
@@ -57,6 +55,36 @@ namespace TravelExpenses.Prism.ViewModels
             {
                 return;
             }
+
+            IsRunning = true;
+            IsEnabled = false;
+
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+
+            ChangePasswordRequest request = new ChangePasswordRequest
+            {
+                Email = user.Email,
+                NewPassword = NewPassword,
+                OldPassword = CurrentPassword,
+                CultureInfo = Languages.Culture
+            };
+
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            Response response = await _apiService.ChangePasswordAsync(url, "/api", "/Account/ChangePassword", request, "bearer", token.Token);
+
+            IsRunning = false;
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
+            await _navigationService.NavigateAsync(nameof(LoginPage));
+
         }
 
         private async Task<bool> ValidateDataAsync()
