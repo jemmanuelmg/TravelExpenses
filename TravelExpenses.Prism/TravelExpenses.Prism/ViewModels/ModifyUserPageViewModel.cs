@@ -116,7 +116,7 @@ namespace TravelExpenses.Prism.ViewModels
             }
 
             Settings.User = JsonConvert.SerializeObject(User);
-            //TravelMasterDetailPageViewModel.GetInstance().ReloadUser();
+            TravelMasterDetailPageViewModel.GetInstance().ReloadUser();
             await App.Current.MainPage.DisplayAlert("Ok", "El usuario se ha actualizado correctamente", "Aceptar");
 
         }
