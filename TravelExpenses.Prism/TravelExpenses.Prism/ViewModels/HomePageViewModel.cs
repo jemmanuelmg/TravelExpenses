@@ -11,7 +11,7 @@ namespace TravelExpenses.Prism.ViewModels
 	{
 		public HomePageViewModel(INavigationService navigationService) : base(navigationService)
 		{
-			Title = "Home Page";
+			Title = "Inicio";
 		}
 	}
 }

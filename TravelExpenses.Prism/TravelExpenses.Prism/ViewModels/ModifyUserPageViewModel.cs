@@ -11,7 +11,7 @@ namespace TravelExpenses.Prism.ViewModels
     {
         public ModifyUserPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Modify User";
+            Title = "Modificar Usuario";
         }
     }
 

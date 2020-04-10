@@ -39,45 +39,47 @@ namespace TravelExpenses.Prism.ViewModels
 
         private void LoadMenus()
         {
-            List<Menu> menus = new List<Menu>
+            List<Menu> menus = new List<Menu>();
+
+            menus.Add(new Menu
             {
-                new Menu
-                {
-                    Icon = "ic_airport_shuttle",
-                    PageName = "HomePage",
-                    Title = "New trip"
-                },
-                new Menu
-                {
-                    Icon = "ic_local_taxi",
-                    PageName = "TaxiHistoryPage",
-                    Title = "See taxi history"
-                },
-                new Menu
-                {
-                    Icon = "ic_people",
-                    PageName = "GroupPage",
-                    Title = "Admin my user group"
-                },
-                new Menu
+                Icon = "ic_home",
+                PageName = "HomePage",
+                Title = "Inicio"
+            });
+
+            menus.Add(new Menu
+            {
+                Icon = "ic_exit_to_app",
+                PageName = "LoginPage",
+                Title = Settings.IsLogin ? "Cerrar Sesión" : "Iniciar Sesión"
+            });
+
+            if (Settings.IsLogin) { 
+
+                menus.Add(new Menu
                 {
                     Icon = "ic_account_circle",
                     PageName = "ModifyUserPage",
-                    Title = "Modify User"
-                },
-                new Menu
+                    Title = "Modificar Usuario"
+                });
+
+                menus.Add(new Menu
                 {
-                    Icon = "ic_report",
-                    PageName = "ReportPage",
-                    Title = "Report an incident"
-                },
-                new Menu
+                    Icon = "ic_map",
+                    PageName = "MyTravelsPage",
+                    Title = "Ver mis viajes"
+                });
+
+                menus.Add(new Menu
                 {
-                    Icon = "ic_exit_to_app",
-                    PageName = "LoginPage",
-                    Title = Settings.IsLogin ? "Cerrar Sesión" : "Iniciar Sesión"
-                }
-            };
+                    Icon = "ic_border_color",
+                    PageName = "NewTravelPage",
+                    Title = "Agregar Nuevo Viaje"
+                });
+
+            }
+
 
             Menus = new ObservableCollection<MenuItemViewModel>(
                 menus.Select(m => new MenuItemViewModel(_navigationService)

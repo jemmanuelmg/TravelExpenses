@@ -18,6 +18,7 @@ namespace TravelExpenses.Prism.ViewModels
         private string _password;
         private DelegateCommand _loginCommand;
         private DelegateCommand _registerCommand;
+        private DelegateCommand _forgotPasswordCommand;
 
         public LoginPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
@@ -31,6 +32,8 @@ namespace TravelExpenses.Prism.ViewModels
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
 
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
+
+        public DelegateCommand ForgotPasswordCommand => _forgotPasswordCommand ?? (_forgotPasswordCommand = new DelegateCommand(ForgotPasswordAsync));
 
         public bool IsRunning
         {
@@ -130,6 +133,12 @@ namespace TravelExpenses.Prism.ViewModels
             //await _navigationService.NavigateAsync(nameof(RegisterPage));
             await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/RegisterPage");
         }
+
+        private async void ForgotPasswordAsync()
+        {
+            await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/RememberPasswordPage");
+        }
+
 
 
     }
