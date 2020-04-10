@@ -108,7 +108,7 @@ namespace TravelExpenses.Prism.ViewModels
 
             User.PictureArray = imageArray;
 
-            User.UserTypeId = Role.Id;
+            User.UserTypeId = 1;
             User.CultureInfo = "es";
             Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);
             IsRunning = false;
@@ -199,12 +199,6 @@ namespace TravelExpenses.Prism.ViewModels
             if (string.IsNullOrEmpty(User.Phone))
             {
                 await App.Current.MainPage.DisplayAlert("Error", "Porfavor ingrese un teléfono válido", "Aceptar");
-                return false;
-            }
-
-            if (Role == null)
-            {
-                await App.Current.MainPage.DisplayAlert("Error", "Porfavor ingrese un tipo de usuario válido", "Aceptar");
                 return false;
             }
 
