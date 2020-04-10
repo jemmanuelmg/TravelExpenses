@@ -67,6 +67,7 @@ namespace TravelExpenses.Prism.ViewModels
                 Title = Settings.IsLogin ? "Cerrar Sesión" : "Iniciar Sesión"
             });
 
+
             if (Settings.IsLogin) { 
 
                 menus.Add(new Menu
@@ -88,6 +89,16 @@ namespace TravelExpenses.Prism.ViewModels
                     Icon = "ic_border_color",
                     PageName = "NewTravelPage",
                     Title = "Agregar Nuevo Viaje"
+                });
+
+            }
+            else
+            {
+                menus.Add(new Menu
+                {
+                    Icon = "ic_supervised_user_circle",
+                    PageName = "RegisterPage",
+                    Title = "Registrarse"
                 });
 
             }

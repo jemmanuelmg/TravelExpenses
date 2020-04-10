@@ -5,5 +5,33 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExpenses.Prism.Views.HomePage"
              Title="{Binding Title}">
-  
+
+    <StackLayout>
+
+        <StackLayout Margin="30">
+            <Label></Label>
+            <Label FontSize="Large" VerticalTextAlignment="Center" FontFamily="Century Gothic" Text="¡Bienvenido a Travel Expenses!" />
+            <Image x:Name="Logo" HorizontalOptions="Center"
+                               HeightRequest="150"
+                               Source="travels"/>
+        </StackLayout>
+        
+        <StackLayout>
+            <Image x:Name="Lans" HorizontalOptions="Center"
+                               Source="landscape1"/>
+        </StackLayout>
+        
+        <StackLayout Margin="30">
+            <Label></Label>
+            <Label> Con esta aplicación podrás registrar tus viajes empresariales, y agregar diferentes gastos tomando foto de sus facturas</Label>
+            <Label></Label>
+            <Label>&#9679; Si no tienes una cuenta, regístrate haciendo clic en el menú lateral</Label>
+            <Label>&#9679; Inicia sesión con tu usuario y contraseña</Label>
+            <Label>&#9679; Asegúrate de dar permiso a esta app para usar tu cámara y ver tus fotos</Label>
+            <Label></Label>
+        </StackLayout>
+        
+    </StackLayout>
+
+
 </ContentPage>

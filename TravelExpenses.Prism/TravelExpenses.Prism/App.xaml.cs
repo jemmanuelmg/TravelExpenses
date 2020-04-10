@@ -27,7 +27,7 @@ namespace TravelExpenses.Prism
         {
             SyncfusionLicenseProvider.RegisterLicense("MjI5MTc5QDMxMzcyZTM0MmUzME5LQ2NlMGk3ckNiMGh4enZEaHlpMnZ4YmhwWmthUnZxNzJlTjFrbjlPV2s9");
             InitializeComponent();
-            await NavigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
