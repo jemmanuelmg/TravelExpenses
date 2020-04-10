@@ -5,23 +5,34 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using TravelExpenses.Common.Helpers;
 using TravelExpenses.Common.Models;
+using TravelExpenses.Common.Services;
 using TravelExpenses.Prism.Helpers;
 
 namespace TravelExpenses.Prism.ViewModels
 {
     public class TravelMasterDetailPageViewModel : ViewModelBase
     {
+        private readonly IApiService _apiService;
+        private static TravelMasterDetailPageViewModel _instance;
         private readonly INavigationService _navigationService;
         private UserResponse _user;
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
-        public TravelMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
+        public TravelMasterDetailPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
+            _instance = this;
+            _apiService = apiService;
             _navigationService = navigationService;
             LoadUser();
             LoadMenus();
         }
+
+        public static TravelMasterDetailPageViewModel GetInstance()
+        {
+            return _instance;
+        }
+
 
         public UserResponse User
         {
@@ -88,6 +99,34 @@ namespace TravelExpenses.Prism.ViewModels
                     PageName = m.PageName,
                     Title = m.Title
                 }).ToList());
+        }
+
+        public async void ReloadUser()
+        {
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            bool connection = await _apiService.CheckConnectionAsync(url);
+            if (!connection)
+            {
+                return;
+            }
+
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            EmailRequest emailRequest = new EmailRequest
+            {
+                CultureInfo = "es",
+                Email = user.Email
+            };
+
+            Response response = await _apiService.GetUserByEmail(url, "api", "/Account/GetUserByEmail", "bearer", token.Token, emailRequest);
+            UserResponse userResponse = (UserResponse)response.Result;
+            Settings.User = JsonConvert.SerializeObject(userResponse);
+            LoadUser();
+        }
+
+        private async void ModifyUserAsync()
+        {
+            await _navigationService.NavigateAsync("/TaxiMasterDetailPage/NavigationPage/ModifyUserPage");
         }
 
     }
