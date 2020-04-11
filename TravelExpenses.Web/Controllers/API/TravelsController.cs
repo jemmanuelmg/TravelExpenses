@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TravelExpenses.Common.Models;
 using TravelExpenses.Web.Data;
@@ -73,26 +75,38 @@ namespace TravelExpenses.Web.Controllers.API
                     .ThenInclude(t => t.ExpenseType)
                 .FirstOrDefaultAsync(t => t.Id == id);
 
-            /*List<TravelEntity> result = _context.Travels
-                .Where(t => t.City == "Massachusets")
-                .Include(t => t.User)
-                .Include(t => t.Expenses)
-                .ThenInclude(t => t.ExpenseType)
-                .ToList<TravelEntity>();
-
-            List<TravelResponse> list2 = new List<TravelResponse>();
-            foreach (TravelEntity element in result){
-                list2.Add(_converterHelper.ToTravelResponse(element));
-            }
-
-            //return Ok(list2);*/
-
             if (travelEntity == null)
             {
                 return NotFound();
             }
 
             return Ok(_converterHelper.ToTravelResponse(travelEntity));
+        }
+
+        [HttpPost]
+        [Route("GetMyTravels")]
+        public async Task<IActionResult> GetMyTrips([FromBody] MyTravelsRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var travelEntities = await _context.Travels
+                .Where(t => t.User.Id == request.UserId)
+                .Include(t => t.User)
+                .Include(t => t.Expenses)
+                .ThenInclude(t => t.ExpenseType)
+                .OrderByDescending(t => t.StartDate)
+                .ToListAsync();
+
+            List<TravelResponse> travelsList = new List<TravelResponse>();
+            foreach (TravelEntity element in travelEntities)
+            {
+                travelsList.Add(_converterHelper.ToTravelResponse(element));
+            }
+
+            return Ok(travelsList);
         }
 
         // GET: api/Travels

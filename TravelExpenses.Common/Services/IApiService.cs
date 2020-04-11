@@ -21,6 +21,8 @@ namespace TravelExpenses.Common.Services
 
         Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string tokenType, string accessToken);
 
+        Task<Response> GetMyTravels(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTravelsRequest model);
+
     }
 
 }

@@ -5,8 +5,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TravelExpenses.Prism.Views.MyTravelsPage"
+             x:Class="TravelExpenses.Prism.Views.MyTravelPage"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
-  
+
 </ContentPage>
