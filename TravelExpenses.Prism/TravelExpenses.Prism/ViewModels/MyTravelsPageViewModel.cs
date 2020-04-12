@@ -17,7 +17,7 @@ namespace TravelExpenses.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private bool _isRunning;
+        private bool _isRunning;    
         private List<TravelItemViewModel> _travels;
         private DelegateCommand _refreshCommand;
 
@@ -26,7 +26,7 @@ namespace TravelExpenses.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             Title = "Ver Mis Viajes";
-            //LoadTravelsAsync();
+            LoadTravelsAsync();
         }
 
         
@@ -41,32 +41,23 @@ namespace TravelExpenses.Prism.ViewModels
             get => _travels;
             set => SetProperty(ref _travels, value);
         }
+        
 
-        /*
        public bool IsRunning
        {
            get => _isRunning;
            set => SetProperty(ref _isRunning, value);
        }
-
-       public List<TravelItemViewModel> Travels
-       {
-           get => _travels;
-           set => SetProperty(ref _travels, value);
-       }
-       */
-
-
-
+               
         private async void LoadTravelsAsync()
         {
-            //IsRunning = true;
+            IsRunning = true;
 
             string url = App.Current.Resources["UrlAPI"].ToString();
             bool connection = await _apiService.CheckConnectionAsync(url);
             if (!connection)
             {
-                //IsRunning = false;
+                IsRunning = false;
                 await App.Current.MainPage.DisplayAlert("Error", "No hay conexión a Internet. Porfavor verifíquela", "Aceptar");
                 return;
             }
@@ -80,7 +71,7 @@ namespace TravelExpenses.Prism.ViewModels
 
             Response response = await _apiService.GetMyTravels(url, "api", "/Travels/GetMyTravels", "bearer", token.Token, request);
 
-            //IsRunning = false;
+            IsRunning = false;
 
             if (!response.IsSuccess)
             {
@@ -99,11 +90,17 @@ namespace TravelExpenses.Prism.ViewModels
                 User = t.User
             }).ToList();
 
-            int a = 1;
+            foreach(TravelItemViewModel element in Travels)
+            {
+                TravelItemViewModel lala = element;
+                string city = element.City;
+                DateTime startDate = element.StartDate;
+                int a = 1;
 
-            
+            }
+
         }
         
 
-        }
+    }
 }
