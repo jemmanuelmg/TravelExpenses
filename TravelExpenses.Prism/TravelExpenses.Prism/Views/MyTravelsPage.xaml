@@ -25,7 +25,7 @@
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
@@ -37,13 +37,13 @@
 
                 <Label Grid.Column="1"
                        FontAttributes="Bold"
-                       Text="Fecha Inicio"/>
+                       Text="Fecha de Partida"/>
                 
                 <Label Grid.Column="2"
                        FontAttributes="Bold"
                        MaxLines="1"
                        LineBreakMode="TailTruncation"
-                       Text="Fecha Finalización"/>
+                       Text="Fecha de Llegada"/>
 
             </Grid>
 
@@ -60,7 +60,7 @@
                             </Grid.GestureRecognizers>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="*" />

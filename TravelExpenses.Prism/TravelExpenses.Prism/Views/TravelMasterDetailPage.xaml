@@ -36,8 +36,8 @@
                            TextColor="Black"/>
                     <Label></Label>
                 </RelativeLayout>
-                
-                
+
+                <Label></Label>
                 
                 <ListView BackgroundColor="Transparent"
                           ItemsSource="{Binding Menus}"

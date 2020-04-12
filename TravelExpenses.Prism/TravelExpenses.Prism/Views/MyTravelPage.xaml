@@ -9,4 +9,91 @@
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
 
+    <StackLayout Margin="15">
+
+        <Label Text="Detalles del Viaje" FontSize="Medium" FontAttributes="Bold"></Label>
+        
+        <Label Text="Ciudad Destino" FontAttributes="Bold"/>
+        <Label Text="{Binding Travel.City}"/>
+
+        <Label Text="Fecha de Inicio" FontAttributes="Bold"/>
+        <Label Text="{Binding Travel.StartDate}"/>
+
+        <Label Text="Fecha de Finalización" FontAttributes="Bold"/>
+        <Label Text="{Binding Travel.EndDate}"/>
+
+        <Label Text="Total Gastos" FontAttributes="Bold"/>
+        <Label Text="{Binding Travel.TotalCost, StringFormat='${0}'}"/>
+
+        <Label Text="Cantidad Gastos" FontAttributes="Bold"/>
+        <Label Text="{Binding Travel.ExpensesCount, StringFormat='{0} gastos'}"/>
+
+        <Label></Label>
+        <Label Text="Gastos relacionados" FontSize="Medium" FontAttributes="Bold"></Label>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0"
+                       FontAttributes="Bold"
+                       Text="Categoría"/>
+
+            <Label Grid.Column="1"
+                       FontAttributes="Bold"
+                       Text="Valor"/>
+
+            <Label Grid.Column="2"
+                       FontAttributes="Bold"
+                       Text="Fecha"/>
+
+        </Grid>
+
+        <CollectionView ItemsSource="{Binding Travel.Expenses}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectTravel2Command}"/>
+                        </Grid.GestureRecognizers>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                                   Text="{Binding Value, StringFormat='${0}'}"/>
+                        <Label Grid.Column="1"
+                                   Text="{Binding ExpenseType.Name}"/>
+                        <Label Grid.Column="2"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="4"
+                                   Text="{Binding Comment}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <StackLayout>
+            <Button Command="{Binding NewExpenseCommand}" 
+                        Text="Agregar nuevo gasto"/>
+        </StackLayout>
+
+
+    </StackLayout>
+
 </ContentPage>
