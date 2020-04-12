@@ -5,5 +5,76 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExpenses.Prism.Views.NewTravelPage"
              Title="{Binding Title}">
+
+    <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All" 
+                 Margin="15">
+
+        <Label></Label>
+        <Image x:Name="newtravelimg" HorizontalOptions="Center"
+                           HeightRequest="150"
+                           Source="newtravel"/>
+        <Label></Label>
+        <Label></Label>
+
+        <ScrollView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Ciudad Destino"
+                               VerticalOptions="Center"/>
+                <Entry Grid.Row="0"
+                               Grid.Column="1"
+                               Placeholder="Introduzca su destino"
+                               />
+
+                <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Fecha de Partida"
+                               VerticalOptions="Center"/>
+                <DatePicker  Grid.Row="1"
+                             Grid.Column="1"
+                             />
+
+                <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Fecha de Llegada"
+                               VerticalOptions="Center"/>
+                <DatePicker  Grid.Row="2"
+                             Grid.Column="1"
+                             />
+
+                <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Comentario"
+                               VerticalOptions="Center"/>
+                <Entry Grid.Row="3"
+                               Grid.Column="1"
+                               Placeholder="Comentario opcional"
+                               />
+            </Grid>
+        </ScrollView>
+
+        <Label></Label>
+
+        <StackLayout>
+            <Button Command="{Binding NewExpenseCommand}" 
+                        Text="Guardar"/>
+        </StackLayout>
+
+
+    </StackLayout>
   
 </ContentPage>

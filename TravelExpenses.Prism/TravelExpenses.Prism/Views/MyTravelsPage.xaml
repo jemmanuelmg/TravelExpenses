@@ -33,7 +33,7 @@
 
                 <Label Grid.Column="0"
                        FontAttributes="Bold"
-                       Text="Ciudad Destino"/>
+                       Text="Ciudad de Destino"/>
 
                 <Label Grid.Column="1"
                        FontAttributes="Bold"
@@ -41,8 +41,6 @@
                 
                 <Label Grid.Column="2"
                        FontAttributes="Bold"
-                       MaxLines="1"
-                       LineBreakMode="TailTruncation"
                        Text="Fecha de Llegada"/>
 
             </Grid>

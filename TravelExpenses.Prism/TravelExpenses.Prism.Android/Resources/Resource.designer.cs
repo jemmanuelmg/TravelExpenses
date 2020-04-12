@@ -6456,58 +6456,61 @@ namespace TravelExpenses.Prism.Droid
 			public const int navigation_empty_icon = 2131165534;
 			
 			// aapt resource value: 0x7F07015F
-			public const int notification_action_background = 2131165535;
+			public const int newtravel = 2131165535;
 			
 			// aapt resource value: 0x7F070160
-			public const int notification_bg = 2131165536;
+			public const int notification_action_background = 2131165536;
 			
 			// aapt resource value: 0x7F070161
-			public const int notification_bg_low = 2131165537;
+			public const int notification_bg = 2131165537;
 			
 			// aapt resource value: 0x7F070162
-			public const int notification_bg_low_normal = 2131165538;
+			public const int notification_bg_low = 2131165538;
 			
 			// aapt resource value: 0x7F070163
-			public const int notification_bg_low_pressed = 2131165539;
+			public const int notification_bg_low_normal = 2131165539;
 			
 			// aapt resource value: 0x7F070164
-			public const int notification_bg_normal = 2131165540;
+			public const int notification_bg_low_pressed = 2131165540;
 			
 			// aapt resource value: 0x7F070165
-			public const int notification_bg_normal_pressed = 2131165541;
+			public const int notification_bg_normal = 2131165541;
 			
 			// aapt resource value: 0x7F070166
-			public const int notification_icon_background = 2131165542;
+			public const int notification_bg_normal_pressed = 2131165542;
 			
 			// aapt resource value: 0x7F070167
-			public const int notification_template_icon_bg = 2131165543;
+			public const int notification_icon_background = 2131165543;
 			
 			// aapt resource value: 0x7F070168
-			public const int notification_template_icon_low_bg = 2131165544;
+			public const int notification_template_icon_bg = 2131165544;
 			
 			// aapt resource value: 0x7F070169
-			public const int notification_tile_bg = 2131165545;
+			public const int notification_template_icon_low_bg = 2131165545;
 			
 			// aapt resource value: 0x7F07016A
-			public const int notify_panel_notification_icon_bg = 2131165546;
+			public const int notification_tile_bg = 2131165546;
 			
 			// aapt resource value: 0x7F07016B
-			public const int password = 2131165547;
+			public const int notify_panel_notification_icon_bg = 2131165547;
 			
 			// aapt resource value: 0x7F07016C
-			public const int plane = 2131165548;
+			public const int password = 2131165548;
 			
 			// aapt resource value: 0x7F07016D
-			public const int ss_main_splash = 2131165549;
+			public const int plane = 2131165549;
 			
 			// aapt resource value: 0x7F07016E
-			public const int tooltip_frame_dark = 2131165550;
+			public const int ss_main_splash = 2131165550;
 			
 			// aapt resource value: 0x7F07016F
-			public const int tooltip_frame_light = 2131165551;
+			public const int tooltip_frame_dark = 2131165551;
 			
 			// aapt resource value: 0x7F070170
-			public const int travels = 2131165552;
+			public const int tooltip_frame_light = 2131165552;
+			
+			// aapt resource value: 0x7F070171
+			public const int travels = 2131165553;
 			
 			static Drawable()
 			{
