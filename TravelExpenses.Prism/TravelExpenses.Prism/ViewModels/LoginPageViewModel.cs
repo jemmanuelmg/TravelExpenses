@@ -47,9 +47,9 @@ namespace TravelExpenses.Prism.ViewModels
             set => SetProperty(ref _isEnabled, value);
         }
 
-        //Cuando solo me interesa tomar el valor, lo hago asi
+        //Cuando solo me interesa tomar este valor de la vista, lo hago asi
         public string Email { get; set; }
-        //Cuando me interesa tomar el valor y tambien setearlo o cambiarlo, lo hago asi
+        //Cuando me interesa tomar el valor de la vista y tambien setearlo o cambiarlo, lo hago asi
         public string Password
         {
             get => _password;
@@ -113,7 +113,6 @@ namespace TravelExpenses.Prism.ViewModels
                 Email = Email
             };
 
-            //AQUI ES DONDE FALLA
             Response response2 = await _apiService.GetUserByEmail(url, "api", "/Account/GetUserByEmail", "bearer", token.Token, emailRequest);
             UserResponse userResponse = (UserResponse)response2.Result;
 
@@ -130,7 +129,6 @@ namespace TravelExpenses.Prism.ViewModels
 
         private async void RegisterAsync()
         {
-            //await _navigationService.NavigateAsync(nameof(RegisterPage));
             await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/RegisterPage");
         }
 

@@ -80,6 +80,11 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+            <StackLayout>
+                <Button Command="{Binding NewTravelCommand}" 
+                        Text="Añadir nuevo viaje"/>
+            </StackLayout>
+
         </StackLayout>
         
         <busyindicator:SfBusyIndicator AnimationType="Gear" 

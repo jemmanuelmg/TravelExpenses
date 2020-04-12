@@ -36,7 +36,9 @@
                            TextColor="Black"/>
                     <Label></Label>
                 </RelativeLayout>
-
+                
+                
+                
                 <ListView BackgroundColor="Transparent"
                           ItemsSource="{Binding Menus}"
                           HasUnevenRows="True"

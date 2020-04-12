@@ -8,7 +8,7 @@ using TravelExpenses.Common.Helpers;
 using TravelExpenses.Common.Models;
 using TravelExpenses.Common.Services;
 using TravelExpenses.Prism.Helpers;
-
+using TravelExpenses.Prism.Views;
 
 namespace TravelExpenses.Prism.ViewModels
 {
@@ -20,6 +20,7 @@ namespace TravelExpenses.Prism.ViewModels
         private bool _isRunning;    
         private List<TravelItemViewModel> _travels;
         private DelegateCommand _refreshCommand;
+        private DelegateCommand _newTravelCommand;
 
         public MyTravelsPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
@@ -32,9 +33,8 @@ namespace TravelExpenses.Prism.ViewModels
         
         public DelegateCommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new DelegateCommand(LoadTravelsAsync));
 
-        public DateTime StartDate { get; set; }
+        public DelegateCommand NewTravelCommand => _newTravelCommand ?? (_newTravelCommand = new DelegateCommand(GoToNewTravelPage));
 
-        public DateTime EndDate { get; set; }
 
         public List<TravelItemViewModel> Travels
         {
@@ -91,7 +91,12 @@ namespace TravelExpenses.Prism.ViewModels
             }).ToList();
 
         }
-        
+
+        public async void GoToNewTravelPage()
+        {
+            await _navigationService.NavigateAsync(nameof(NewTravelPage));
+        }
+
 
     }
 }
