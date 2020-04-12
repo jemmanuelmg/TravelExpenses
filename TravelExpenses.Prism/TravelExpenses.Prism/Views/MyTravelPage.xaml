@@ -64,10 +64,6 @@
                 <DataTemplate>
                     <Grid>
 
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SelectTravel2Command}"/>
-                        </Grid.GestureRecognizers>
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -86,6 +82,21 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <StackLayout>
+                    <Label Text="No hay gastos registrados"
+                       Margin="10,25,10,10"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center" />
+                    <Label Text="Añade un nuevo gasto tocando en el botón"
+                       FontAttributes="Italic"
+                       FontSize="12"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center" />
+                </StackLayout>
+            </CollectionView.EmptyView>
         </CollectionView>
 
         <StackLayout>

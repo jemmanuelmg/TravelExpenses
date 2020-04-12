@@ -1,24 +1,11 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using TravelExpenses.Common.Models;
 using System.Threading.Tasks;
-using TravelExpenses.Common.Services;
-using Newtonsoft.Json;
 using TravelExpenses.Common.Helpers;
+using TravelExpenses.Common.Models;
+using TravelExpenses.Common.Services;
 
 namespace TravelExpenses.Prism.ViewModels
 {
@@ -26,8 +13,11 @@ namespace TravelExpenses.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
+        private bool _isRunning;
+        private bool _isEnabled;
         private TravelRequest _travel;
         private DelegateCommand _saveTravel;
+
 
         public NewTravelPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
@@ -35,9 +25,17 @@ namespace TravelExpenses.Prism.ViewModels
             _apiService = apiService;
             _travel = new TravelRequest();
             Title = "Agregar Nuevo Viaje";
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
         }
 
         public DelegateCommand SaveTravel => _saveTravel ?? (_saveTravel = new DelegateCommand(SaveNewTravel));
+
+        public string City { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
 
         public TravelRequest Travel
         {
@@ -45,11 +43,18 @@ namespace TravelExpenses.Prism.ViewModels
             set => SetProperty(ref _travel, value);
         }
 
-        public string City { get; set; }
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
 
-        public DateTime StartDate { get; set; }
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set => SetProperty(ref _isEnabled, value);
+        }
 
-        public DateTime EndDate { get; set; }
 
 
         private async void SaveNewTravel()
@@ -60,14 +65,14 @@ namespace TravelExpenses.Prism.ViewModels
                 return;
             }
 
-            //IsRunning = true;
-            //IsEnabled = false;
+            IsRunning = true;
+            IsEnabled = false;
             string url = App.Current.Resources["UrlAPI"].ToString();
             bool connection = await _apiService.CheckConnectionAsync(url);
             if (!connection)
             {
-                //IsRunning = false;
-                //IsEnabled = true;
+                IsRunning = false;
+                IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert("Error", "No hay conexión a Internet", "Aceptar");
                 return;
             }
@@ -84,8 +89,8 @@ namespace TravelExpenses.Prism.ViewModels
             };
 
             var response = await _apiService.AddNewTravel(url, "/api", "/Travels", "bearer", token.Token, travelRequest);
-            //IsRunning = false;
-            //IsEnabled = true;
+            IsRunning = false;
+            IsEnabled = true;
 
             if (!response.IsSuccess)
             {
@@ -94,8 +99,8 @@ namespace TravelExpenses.Prism.ViewModels
             }
 
             await App.Current.MainPage.DisplayAlert("Ok", "Nuevo viaje agregado correctamente", "Aceptar");
-            //await _navigationService.GoBackAsync();
-            await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
+            await _navigationService.GoBackAsync();
+            //await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
 
 
         }

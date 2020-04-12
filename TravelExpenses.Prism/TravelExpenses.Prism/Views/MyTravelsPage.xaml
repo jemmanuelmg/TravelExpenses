@@ -81,6 +81,10 @@
             <StackLayout>
                 <Button Command="{Binding NewTravelCommand}" 
                         Text="Añadir nuevo viaje"/>
+                <Button Command="{Binding RefreshCommand}" 
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="Refrescar"
+                        Style="{StaticResource DangerButton}"/>
             </StackLayout>
 
         </StackLayout>
