@@ -10,61 +10,41 @@
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
-                     Padding="5">
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0"
-                       Grid.Row="0"
-                       FontAttributes="Bold"
-                       Text="Fecha de Inicio"/>
-                <Label Grid.Column="1"
-                       Grid.Row="0"
-                       FontAttributes="Bold"
-                       Text="Fecha de Finalizacion"/>
-                <DatePicker  Grid.Column="0"
-                             Grid.Row="1"
-                             Date="{Binding StartDate}"/>
-                <DatePicker  Grid.Column="1"
-                             Grid.Row="1"
-                             Date="{Binding EndDate}"/>
-                <ImageButton Grid.Column="2"
-                             Grid.Row="0"
-                             Grid.RowSpan="2"
-                             Command="{Binding RefreshCommand}" 
-                             Source="ic_refresh"/>
-            </Grid>
-
-
+                     Margin="15">
+            <Label></Label>
+            <Image x:Name="planeimg" HorizontalOptions="Center"
+                           HeightRequest="150"
+                           Source="plane"/>
+            <Label></Label>
+            <Label>Aquí puedes ver los viajes que has registrado. Mira los detalles y gastos tocando en el viaje deseado.</Label>
+            <Label></Label>
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="48" />
                 </Grid.ColumnDefinitions>
+
                 <Label Grid.Column="0"
                        FontAttributes="Bold"
-                       Text="Fecha de Inicio"/>
+                       Text="Ciudad Destino"/>
+
                 <Label Grid.Column="1"
+                       FontAttributes="Bold"
+                       Text="Fecha Inicio"/>
+                
+                <Label Grid.Column="2"
                        FontAttributes="Bold"
                        MaxLines="1"
                        LineBreakMode="TailTruncation"
-                       Text="*"/>
-                <Label Grid.Column="2"
-                       FontAttributes="Bold"
-                       Text="Origen"/>
+                       Text="Fecha Finalización"/>
+
             </Grid>
 
             <CollectionView ItemsSource="{Binding Travels}">
@@ -78,13 +58,22 @@
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelectTravel2Command}"/>
                             </Grid.GestureRecognizers>
-                            
+
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0"
                                    Text="{Binding City}"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding StartDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
+                            <Label Grid.Column="2"
+                                   Text="{Binding EndDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}"/>
+                            <Image Grid.Column="3" 
+                                   Source="ic_arrow_forward_ios"/>
                             
                         </Grid>
                     </DataTemplate>

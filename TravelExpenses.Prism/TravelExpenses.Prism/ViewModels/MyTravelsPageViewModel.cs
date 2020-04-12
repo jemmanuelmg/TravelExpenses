@@ -90,15 +90,6 @@ namespace TravelExpenses.Prism.ViewModels
                 User = t.User
             }).ToList();
 
-            foreach(TravelItemViewModel element in Travels)
-            {
-                TravelItemViewModel lala = element;
-                string city = element.City;
-                DateTime startDate = element.StartDate;
-                int a = 1;
-
-            }
-
         }
         
 
