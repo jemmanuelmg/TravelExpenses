@@ -38,7 +38,7 @@
                 <Entry Grid.Row="0"
                                Grid.Column="1"
                                Placeholder="Introduzca su destino"
-                               />
+                               Text="{Binding City}"/>
 
                 <Label Grid.Row="1"
                                Grid.Column="0"
@@ -46,7 +46,7 @@
                                VerticalOptions="Center"/>
                 <DatePicker  Grid.Row="1"
                              Grid.Column="1"
-                             />
+                             Date="{Binding StartDate}"/>
 
                 <Label Grid.Row="2"
                                Grid.Column="0"
@@ -54,6 +54,7 @@
                                VerticalOptions="Center"/>
                 <DatePicker  Grid.Row="2"
                              Grid.Column="1"
+                             Date="{Binding EndDate}"
                              />
 
                 <Label Grid.Row="3"
@@ -70,7 +71,7 @@
         <Label></Label>
 
         <StackLayout>
-            <Button Command="{Binding NewExpenseCommand}" 
+            <Button Command="{Binding SaveTravel}" 
                         Text="Guardar"/>
         </StackLayout>
 

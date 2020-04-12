@@ -50,8 +50,7 @@ namespace TravelExpenses.Web.Controllers.API
                 StartDate = travelRequest.StartDate,
                 EndDate = travelRequest.EndDate,
                 City = travelRequest.City,
-                User = userEntity,
-                //not expenses for now. Expenses will be added in the Expenses API controller
+                User = userEntity
             };
 
             _context.Travels.Add(travelEntity);
