@@ -16,5 +16,15 @@ namespace TravelExpenses.Prism.Helpers
             };
         }
 
+        public static List<ExpenseCategory> GetExpenseCategories()
+        {
+            return new List<ExpenseCategory>
+            {
+                new ExpenseCategory { Id = 1, Name = "Transporte" },
+                new ExpenseCategory { Id = 2, Name = "Hospedaje" },
+                new ExpenseCategory { Id = 3, Name = "Alimentación" }
+            };
+        }
+
     }
 }
