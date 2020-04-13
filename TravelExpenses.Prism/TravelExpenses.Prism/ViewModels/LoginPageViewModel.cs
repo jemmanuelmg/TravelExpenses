@@ -123,6 +123,7 @@ namespace TravelExpenses.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
+            await App.Current.MainPage.DisplayAlert("Ok", "Sesion iniciada correctamente", "Aceptar");
             await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
             Password = string.Empty;
         }

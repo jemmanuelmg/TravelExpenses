@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TravelExpenses.Common.Helpers;
 using TravelExpenses.Common.Models;
 using TravelExpenses.Common.Services;
+using TravelExpenses.Prism.Views;
 
 namespace TravelExpenses.Prism.ViewModels
 {
@@ -99,8 +100,7 @@ namespace TravelExpenses.Prism.ViewModels
             }
 
             await App.Current.MainPage.DisplayAlert("Ok", "Nuevo viaje agregado correctamente", "Aceptar");
-            await _navigationService.GoBackAsync();
-            //await _navigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
+            await _navigationService.NavigateAsync(nameof(MyTravelsPage));
 
 
         }
