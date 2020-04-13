@@ -25,6 +25,8 @@ namespace TravelExpenses.Common.Services
 
         Task<Response> AddNewTravel<T>(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, T model);
 
+        Task<Response> AddNewExpense<T>(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, T model);
+
     }
 
 }

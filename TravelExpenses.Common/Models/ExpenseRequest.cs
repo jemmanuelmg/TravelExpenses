@@ -12,9 +12,9 @@ namespace TravelExpenses.Common.Models
 
         public string Comment { get; set; }
 
-        public string ReceiptPath { get; set; }
+        public byte[] PictureArray { get; set; }
 
-        public string ExpenseType { get; set; }
+        public int ExpenseTypeId { get; set; }
 
     }
 }

@@ -42,6 +42,7 @@ namespace TravelExpenses.Prism.ViewModels
         }
 
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
+
         public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
 
         public ImageSource Image
@@ -107,7 +108,6 @@ namespace TravelExpenses.Prism.ViewModels
             }
 
             User.PictureArray = imageArray;
-
             User.UserTypeId = 1;
             User.CultureInfo = "es";
             Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);

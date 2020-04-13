@@ -37,7 +37,12 @@ namespace TravelExpenses.Prism.ViewModels
 
         public async void GoToNewExpensePage()
         {
-            await _navigationService.NavigateAsync(nameof(NewExpensePage));
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { "travel", Travel }
+            };
+
+            await _navigationService.NavigateAsync(nameof(NewExpensePage), parameters);
         }
 
     }
