@@ -35,8 +35,15 @@ namespace TravelExpenses.Web.Controllers
                 return NotFound();
             }
 
+            /*var travelEntity = await _context.Travels
+                .FirstOrDefaultAsync(m => m.Id == id);*/
+
             var travelEntity = await _context.Travels
+                .Include(t => t.User)
+                .Include(t => t.Expenses)
+                .ThenInclude(t => t.ExpenseType)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (travelEntity == null)
             {
                 return NotFound();

@@ -34,3 +34,47 @@
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Gastos de este viaje:</h3>
+            </div>
+            <div class="panel-body">
+
+                @foreach (var item in Model.Expenses)
+                {
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <p><b>Valor Registrado</b></p>
+                                <p>$@Html.DisplayFor(modelItem => item.Value)</p>
+
+                                <p><b>Tipo de gasto</b></p>
+                                <p>@Html.DisplayFor(modelItem => item.ExpenseType.Name)</p>
+
+                                <p><b>Comentario</b></p>
+                                <p>@Html.DisplayFor(modelItem => item.Comment)</p>
+
+                            </div>
+                            <div class="col-md-6">
+
+                                <p><b>Foto de Recibo</b></p>
+                                <br />
+                                <img src="@Url.Content(item.ReceiptPath)" height="400" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <br />
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
