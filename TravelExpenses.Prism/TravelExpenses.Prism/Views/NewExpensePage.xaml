@@ -18,7 +18,6 @@
                 <StackLayout>
                     <Label></Label>
                     <Label Text="Datos del gasto" FontSize="Medium" FontAttributes="Bold"></Label>
-                    <Label Text="{Binding Travel.City}"></Label>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
