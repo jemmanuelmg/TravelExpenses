@@ -23,7 +23,7 @@ namespace TravelExpenses.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Travels.ToListAsync());
+            return View(await _context.Travels.Include(t => t.User).ToListAsync());
         }
 
         // GET: Travels/Details/5
@@ -127,31 +127,14 @@ namespace TravelExpenses.Web.Controllers
             return View(travelEntity);
         }
 
+        
         // GET: Travels/Delete/5
-        [HttpGet]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var travelEntity = await _context.Travels
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (travelEntity == null)
-            {
-                return NotFound();
-            }
-
-            return View(travelEntity);
-        }
-
-        // POST: Travels/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var travelEntity = await _context.Travels.FindAsync(id);
+                                .Include(t => t.Expenses)
+                                .FirstOrDefaultAsync(t => t.Id == id);
+            
             _context.Travels.Remove(travelEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
