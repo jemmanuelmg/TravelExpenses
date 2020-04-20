@@ -44,15 +44,15 @@
 
             <Label Grid.Column="0"
                        FontAttributes="Bold"
-                       Text="Categoría"/>
+                       Text="Valor"/>
 
             <Label Grid.Column="1"
                        FontAttributes="Bold"
-                       Text="Valor"/>
+                       Text="Categoría"/>
 
             <Label Grid.Column="2"
                        FontAttributes="Bold"
-                       Text="Fecha"/>
+                       Text="Comentario"/>
 
         </Grid>
 
@@ -76,7 +76,7 @@
                                    Text="{Binding ExpenseType.Name}"/>
                         <Label Grid.Column="2"
                                    LineBreakMode="TailTruncation"
-                                   MaxLines="4"
+                                   MaxLines="3"
                                    Text="{Binding Comment}"/>
 
                     </Grid>

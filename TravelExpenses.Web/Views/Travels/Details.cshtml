@@ -11,23 +11,42 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            Fecha de Inicio
         </dt>
         <dd>
             @Html.DisplayFor(model => model.StartDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
+            Fecha de Finalización
         </dt>
         <dd>
             @Html.DisplayFor(model => model.EndDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            Ciudad de Destino
         </dt>
         <dd>
             @Html.DisplayFor(model => model.City)
         </dd>
+        <dt>
+            Documento Empleado
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Document)
+        </dd>
+        <dt>
+            Nombres Empleado
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+        <dt>
+            Apellidos Empleado
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.LastName)
+        </dd>
+
     </dl>
 </div>
 <div>
