@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TravelExpenses.Prism.Views.HelpPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="#EDF2F5" Grid.Row="1">
+            <StackLayout Margin="20">
+                <syncfusion:SfExpander>
+                    <syncfusion:SfExpander.Header>
+                        <Grid>
+                            <Label TextColor="#495F6E" Text="Que es Travel Expenses" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </syncfusion:SfExpander.Header>
+                    <syncfusion:SfExpander.Content>
+                        <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                            <Label TextColor="#303030" Text="Travel expenses es una aplicación que permite legalizar gastos de viaje de una manera inteligente y sencilla. 
+                                   Con esta app, cada vez que decidas emprender un nuevo viaje podrás registrar facilmente los gastos que hagas (como alimentación, transporte u hospedaje)
+                                   y tomar una foto de los recibos que permitan respaldar el gasto realizado" HeightRequest="50" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </syncfusion:SfExpander.Content>
+                </syncfusion:SfExpander>
+                <syncfusion:SfExpander>
+                    <syncfusion:SfExpander.Header>
+                        <Grid>
+                            <Label TextColor="#495F6E" Text="¿Como puedo acceder?" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </syncfusion:SfExpander.Header>
+                    <syncfusion:SfExpander.Content>
+                        <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                            <Label TextColor="#303030" Text="Para poder registrar tus viajes y gastos debes registrarte en Travel Expenses. Puedes hacerlo accediendo al menú lateral de opciones
+                                   y entrando en le menú 'Registrarse' y completando tus datos" HeightRequest="50" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </syncfusion:SfExpander.Content>
+                </syncfusion:SfExpander>
+
+
+                <syncfusion:SfExpander>
+                    <syncfusion:SfExpander.Header>
+                        <Grid>
+                            <Label TextColor="#495F6E" Text="Agregar viajes" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </syncfusion:SfExpander.Header>
+                    <syncfusion:SfExpander.Content>
+                        <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                            <Label TextColor="#303030" Text="Pellentesque gravida augue nec nisl porttitor, ut congue neque rutrum. Sed a lacus eget sapien dapibus lacinia. Nam vel libero quam. Nulla facilisi.
+                                   Aenean maximus lobortis felis id porttitor" HeightRequest="50" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </syncfusion:SfExpander.Content>
+                </syncfusion:SfExpander>
+
+                
+                <syncfusion:SfExpander>
+                    <syncfusion:SfExpander.Header>
+                        <Grid>
+                            <Label TextColor="#495F6E" Text="Agregar gastos" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </syncfusion:SfExpander.Header>
+                    <syncfusion:SfExpander.Content>
+                        <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                            <Label TextColor="#303030" Text="In consequat metus tellus, et feugiat justo tincidunt vitae. Cras accumsan scelerisque lorem nec dictum.
+                                   Nam volutpat ante ac elit efficitur" HeightRequest="50" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </syncfusion:SfExpander.Content>
+                </syncfusion:SfExpander>
+
+                <syncfusion:SfExpander>
+                    <syncfusion:SfExpander.Header>
+                        <Grid>
+                            <Label TextColor="#495F6E" Text="No puedo tomar fotos" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </syncfusion:SfExpander.Header>
+                    <syncfusion:SfExpander.Content>
+                        <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                            <Label TextColor="#303030" Text="Aenean metus arcu, eleifend finibus turpis mollis, pharetra imperdiet tellus. Morbi vestibulum purus ac ipsum dictum, quis iaculis dui scelerisque. Aenean venenatis nibh odio, a 
+                                   tincidunt erat auctor in. Integer justo ipsum," HeightRequest="50" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </syncfusion:SfExpander.Content>
+                </syncfusion:SfExpander>
+
+                <syncfusion:SfExpander>
+                    <syncfusion:SfExpander.Header>
+                        <Grid>
+                            <Label TextColor="#495F6E" Text="He olvidado mi contraseña" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </syncfusion:SfExpander.Header>
+                    <syncfusion:SfExpander.Content>
+                        <Grid Padding="10,10,10,10" BackgroundColor="#FFFFFF">
+                            <Label TextColor="#303030" Text="Pharetra imperdiet tellus. Morbi vestibulum purus ac ipsum dictum, quis iaculis dui scelerisque. Aenean venenatis nibh odio, a 
+                                   tincidunt erat  vestibulum purus ac ipsum dictum, quis, Aenean metus arcu, eleifend finibus turpis mollis, pharetra imperdiet tellus. Morbi vestibulum purus ac ipsum dictum, quis iaculis dui scelerisque. Aenean venenatis nibh odio, a 
+                                   tincidunt erat auctor in. Integer justo ipsum," HeightRequest="50" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </syncfusion:SfExpander.Content>
+                </syncfusion:SfExpander>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

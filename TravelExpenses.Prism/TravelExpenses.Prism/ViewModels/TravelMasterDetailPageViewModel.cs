@@ -103,6 +103,13 @@ namespace TravelExpenses.Prism.ViewModels
 
             }
 
+            menus.Add(new Menu
+            {
+                Icon = "ic_help",
+                PageName = "HelpPage",
+                Title = "Acerca de"
+            });
+
 
             Menus = new ObservableCollection<MenuItemViewModel>(
                 menus.Select(m => new MenuItemViewModel(_navigationService)
