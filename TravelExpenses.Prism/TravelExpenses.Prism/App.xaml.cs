@@ -25,7 +25,12 @@ namespace TravelExpenses.Prism
 
         protected override async void OnInitialized()
         {
-            SyncfusionLicenseProvider.RegisterLicense("MjI5MTc5QDMxMzcyZTM0MmUzME5LQ2NlMGk3ckNiMGh4enZEaHlpMnZ4YmhwWmthUnZxNzJlTjFrbjlPV2s9");
+            //Version 17 Synfusion
+            //SyncfusionLicenseProvider.RegisterLicense("MjI5MTc5QDMxMzcyZTM0MmUzME5LQ2NlMGk3ckNiMGh4enZEaHlpMnZ4YmhwWmthUnZxNzJlTjFrbjlPV2s9");
+
+            //Version 18 Synfusion
+            SyncfusionLicenseProvider.RegisterLicense("MjQzMjMxQDMxMzgyZTMxMmUzMGF1bmlMLyt2NE1tK0J1OFNkYjJDZkl2Z1BLYSs0VXBqWTY4ZUMxR3BYc289");
+
             InitializeComponent();
             await NavigationService.NavigateAsync("/TravelMasterDetailPage/NavigationPage/HomePage");
         }

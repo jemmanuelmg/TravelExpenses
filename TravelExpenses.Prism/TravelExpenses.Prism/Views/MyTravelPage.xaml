@@ -6,6 +6,7 @@
              ios:Page.UseSafeArea="true"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TravelExpenses.Prism.Views.MyTravelPage"
+             xmlns:badge ="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
 
@@ -23,7 +24,9 @@
         <Label Text="{Binding Travel.EndDate}"/>
 
         <Label Text="Total Gastos" FontAttributes="Bold"/>
-        <Label Text="{Binding Travel.TotalCost, StringFormat='${0}'}"/>
+        <badge:SfBadgeView>
+            <badge:SfBadgeView BadgeText="{Binding Travel.TotalCost, StringFormat='${0}'}" HorizontalOptions="Start" />
+        </badge:SfBadgeView>
 
         <Label Text="Cantidad Gastos" FontAttributes="Bold"/>
         <Label Text="{Binding Travel.ExpensesCount, StringFormat='{0} gastos'}"/>

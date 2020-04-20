@@ -10,7 +10,9 @@
     <ContentPage.Content>
         <ScrollView BackgroundColor="#EDF2F5" Grid.Row="1">
             <StackLayout Margin="20">
-                <syncfusion:SfExpander>
+
+
+                <syncfusion:SfExpander IsExpanded="True">
                     <syncfusion:SfExpander.Header>
                         <Grid>
                             <Label TextColor="#495F6E" Text="Que es Travel Expenses" VerticalTextAlignment="Center" />
@@ -24,6 +26,8 @@
                         </Grid>
                     </syncfusion:SfExpander.Content>
                 </syncfusion:SfExpander>
+                
+                
                 <syncfusion:SfExpander>
                     <syncfusion:SfExpander.Header>
                         <Grid>

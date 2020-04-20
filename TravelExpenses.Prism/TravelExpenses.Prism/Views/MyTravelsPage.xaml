@@ -15,7 +15,6 @@
             <Image x:Name="planeimg" HorizontalOptions="Center"
                            HeightRequest="150"
                            Source="plane"/>
-            <Label></Label>
             <Label>Aquí puedes ver los viajes que has registrado. Mira los detalles y gastos tocando en el viaje deseado.</Label>
             <Label></Label>
             
