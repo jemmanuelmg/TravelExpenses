@@ -30,7 +30,11 @@ namespace TravelExpenses.Web.Helpers
 
         Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user);
 
+        Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token);
+
         Task<string> GeneratePasswordResetTokenAsync(UserEntity user);
+
+        Task<IdentityResult> ResetPasswordAsync(UserEntity user, string token, string password);
 
         Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword);
 

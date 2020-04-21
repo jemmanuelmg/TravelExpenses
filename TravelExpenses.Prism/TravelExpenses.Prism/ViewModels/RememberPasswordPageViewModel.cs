@@ -70,7 +70,7 @@ namespace TravelExpenses.Prism.ViewModels
             EmailRequest request = new EmailRequest
             {
                 Email = Email,
-                CultureInfo = Languages.Culture
+                CultureInfo = "es"
             };
 
             Response response = await _apiService.RecoverPasswordAsync(url, "/api", "/Account/RecoverPassword", request);

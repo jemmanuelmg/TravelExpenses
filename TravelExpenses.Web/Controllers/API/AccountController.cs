@@ -93,7 +93,7 @@ namespace TravelExpenses.Web.Controllers.API
             }, protocol: HttpContext.Request.Scheme);
 
             _mailHelper.SendMail(request.Email, "Confirmacion de cuenta - Travel Expenses", $"<h1>Confirmar cuenta Travel Expenses</h1>" +
-                $"Porfavor da click en este enlace para confirmar tu cuenta y comenzar a usar la aplicación Travel Expenses</br></br><a href = \"{tokenLink}\">Tu enlace de confirmación</a>");
+                $"Porfavor da click en este enlace para confirmar tu cuenta y comenzar a usar la aplicación Travel Expenses<br/><br/><a href = \"{tokenLink}\">Tu enlace de confirmación</a>");
 
             return Ok(new Response
             {
@@ -131,8 +131,8 @@ namespace TravelExpenses.Web.Controllers.API
 
             string myToken = await _userHelper.GeneratePasswordResetTokenAsync(user);
             string link = Url.Action("ResetPassword", "Account", new { token = myToken }, protocol: HttpContext.Request.Scheme);
-            _mailHelper.SendMail(request.Email, Resource.RecoverPasswordSubject, $"<h1>{Resource.RecoverPasswordSubject}</h1>" +
-                $"{Resource.RecoverPasswordBody}</br></br><a href = \"{link}\">{Resource.RecoverPasswordSubject}</a>");
+            _mailHelper.SendMail(request.Email, "Recuperar Contraseña Travel Expenses", $"<h1>Recuperar Contrasena Travel Expenses</h1>" +
+                $"<p>Para reestablecer tu cuenta en travel expenses porfavor da clic en el siguiente enlace</p><br/><br/><a href=\"{link}\">Clic aqui para reestablecer contrasena</a>");
 
             return Ok(new Response
             {

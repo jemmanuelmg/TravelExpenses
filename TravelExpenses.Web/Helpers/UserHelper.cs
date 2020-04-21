@@ -98,6 +98,19 @@ namespace TravelExpenses.Web.Helpers
             return await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
         }
 
+        public async Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token)
+        {
+            return await _userManager.ConfirmEmailAsync(user, token);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(UserEntity user, string token, string password)
+        {
+            return await _userManager.ResetPasswordAsync(user, token, password);
+        }
+
+
+
+
 
     }
 }
